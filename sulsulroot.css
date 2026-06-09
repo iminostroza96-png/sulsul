@@ -121,7 +121,7 @@ body.dark-mode {
 --line-strong:rgba(242,242,242,.24);
 
 --shadow:0 20px 60px rgba(0,0,0,.35);
---overlay:rgba(26,26,26,.72);
+--overlay:rgba(0,0,0,.72);
 
 --selection-bg:var(--accent);
 --selection-text:var(--bg);
