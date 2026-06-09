@@ -352,3 +352,127 @@ border:0;
 border-top:1px solid var(--line);
 margin:24px 0;
 }
+
+/****************************************
+  SULSUL — NAVBAR Y HEADER BASE
+****************************************/
+
+.sulsul-navbar-top,
+.sulsul-navbar-links,
+.sulsul-navbar-bottom {
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:14px;
+}
+
+.sulsul-nav-logo {
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid var(--line);
+background:var(--bg);
+font-family:var(--fuente-titulo);
+font-size:var(--size-title);
+color:var(--title);
+}
+
+.sulsul-navbar-links {
+flex:1;
+justify-content:center;
+overflow:hidden;
+}
+
+.sulsul-navbar-links a {
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid transparent;
+font-family:var(--fuente-ui);
+font-size:0;
+color:var(--text);
+}
+
+.sulsul-navbar-links a::first-letter {
+font-size:var(--size-small);
+}
+
+.sulsul-navbar-links a:hover {
+border-color:var(--line);
+background:var(--accent-soft);
+color:var(--accent);
+}
+
+.sulsul-theme-toggle,
+.sulsul-nav-up {
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid var(--line);
+background:var(--bg);
+color:var(--text);
+font-family:var(--fuente-ui);
+font-size:var(--size-body);
+line-height:1;
+}
+
+.sulsul-theme-toggle:hover,
+.sulsul-nav-up:hover {
+background:var(--accent);
+color:var(--selection-text);
+}
+
+.sulsul-header-inner {
+width:min(760px, calc(100% - 80px));
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:18px;
+text-align:center;
+}
+
+.sulsul-header-kicker {
+font-family:var(--fuente-ui);
+font-size:var(--size-subtitle);
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.12em;
+color:var(--text);
+}
+
+.sulsul-header-title {
+font-family:var(--fuente-titulo);
+font-size:clamp(48px, 10vw, 150px);
+font-weight:400;
+line-height:.85;
+letter-spacing:.02em;
+text-transform:none;
+color:var(--title);
+margin:0;
+}
+
+.sulsul-header-subtitle {
+max-width:520px;
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+font-weight:400;
+line-height:1.6;
+text-transform:none;
+color:var(--text-soft);
+}
+
+/*** OCULTAMOS HEADER VIEJO TEMPORALMENTE ***/
+
+#page-header {
+display:none;
+}
+
+
