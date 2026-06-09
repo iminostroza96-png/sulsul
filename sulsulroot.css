@@ -852,11 +852,11 @@ color:var(--text);
 .h3,
 .table-title,
 .page-title {
-font-family:var(--fuente-ui);
-font-size:var(--size-subtitle);
+font-family:var(--fuente-titulo);
+font-size:var(--size-title);
 font-weight:700;
 text-transform:uppercase;
-letter-spacing:.08em;
+letter-spacing:2em;
 color:var(--text);
 border-bottom:1px solid var(--line);
 }
