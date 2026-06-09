@@ -37,7 +37,7 @@ font-display:swap;
 
 /*** LAYOUT GENERAL ***/
 
---nav-width:86px;
+--nav-width:75px;
 --header-height:100vh;
 --header-content-width:900px;
 
@@ -271,31 +271,44 @@ width:var(--nav-width);
 min-width:var(--nav-width);
 max-width:var(--nav-width);
 height:100vh;
-background:var(--surface);
+background:rgba(255,255,255,.78);
 border-right:1px solid var(--line);
-box-shadow:var(--shadow);
+box-shadow:18px 0 50px rgba(26,26,26,.08);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:space-between;
-padding:26px 0;
+padding:22px 0;
+}
+
+body.dark-mode .sulsul-navbar {
+background:rgba(26,26,26,.82);
+box-shadow:18px 0 50px rgba(0,0,0,.30);
 }
 
 .sulsul-navbar-top,
-.sulsul-navbar-links,
 .sulsul-navbar-bottom {
 width:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:14px;
+gap:10px;
 }
 
 .sulsul-navbar-links {
+width:100%;
 flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
 justify-content:center;
+gap:8px;
 overflow:hidden;
 }
+
+/*** LOGO ***/
 
 .sulsul-nav-logo {
 width:42px;
@@ -303,56 +316,207 @@ height:42px;
 display:flex;
 align-items:center;
 justify-content:center;
+background:var(--surface);
 border:1px solid var(--line);
-background:var(--bg);
 font-family:var(--fuente-titulo);
 font-size:var(--size-title);
+line-height:1;
 color:var(--title);
 }
 
-.sulsul-navbar-links a {
-width:42px;
-height:42px;
+/*** LINKS GENERADOS POR FOROACTIVO ***/
+
+.sulsul-navbar-links a,
+.sulsul-navbar-links a.mainmenu {
+width:34px;
+height:34px;
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
+isolation:isolate;
+background:transparent;
 border:1px solid transparent;
-font-family:var(--fuente-ui);
-font-size:0;
-color:var(--text);
+color:var(--text-soft)!important;
+font-size:0!important;
+line-height:1;
+text-align:center;
+overflow:hidden;
 }
 
-.sulsul-navbar-links a::first-letter {
-font-size:var(--size-small);
+/*** Ocultar sprites/imágenes nativas de Foroactivo ***/
+
+.sulsul-navbar-links a img,
+.sulsul-navbar-links a.mainmenu img,
+.sulsul-navbar-links img.sprite-icon,
+.sulsul-navbar-links .sprite-icon {
+display:none!important;
+opacity:0!important;
+visibility:hidden!important;
+width:0!important;
+height:0!important;
 }
 
-.sulsul-navbar-links a:hover {
-border-color:var(--line);
+/*** Ícono base Font Awesome ***/
+
+.sulsul-navbar-links a::before,
+.sulsul-navbar-links a.mainmenu::before {
+font-family:"Font Awesome 6 Free";
+font-weight:900;
+font-size:14px;
+line-height:1;
+color:currentColor;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/*** Hover ***/
+
+.sulsul-navbar-links a:hover,
+.sulsul-navbar-links a.mainmenu:hover {
 background:var(--accent-soft);
-color:var(--accent);
+border-color:var(--line);
+color:var(--accent)!important;
 }
+
+/****************************************
+  MAPEO DE ÍCONOS NAVBAR
+****************************************/
+
+/* Inicio / Índice */
+.sulsul-navbar-links a[href="/"]::before,
+.sulsul-navbar-links a[href="/forum"]::before,
+.sulsul-navbar-links a[title="Índice"]::before,
+.sulsul-navbar-links a[title="Indice"]::before {
+content:"\f015";
+}
+
+/* Calendario */
+.sulsul-navbar-links a[href*="/calendar"]::before,
+.sulsul-navbar-links a[title="Calendario"]::before {
+content:"\f133";
+font-weight:400;
+}
+
+/* Últimas imágenes / galería */
+.sulsul-navbar-links a[href*="/images"]::before,
+.sulsul-navbar-links a[title="Últimas imágenes"]::before,
+.sulsul-navbar-links a[title="Ultimas imagenes"]::before {
+content:"\f03e";
+font-weight:400;
+}
+
+/* Toda la actividad / Discover */
+.sulsul-navbar-links a[href*="/discover"]::before,
+.sulsul-navbar-links a[title="Toda la Actividad"]::before {
+content:"\f0ca";
+}
+
+/* FAQ */
+.sulsul-navbar-links a[href*="/faq"]::before,
+.sulsul-navbar-links a[title="FAQ"]::before {
+content:"\f059";
+font-weight:400;
+}
+
+/* Buscar */
+.sulsul-navbar-links a[href*="/search"]::before,
+.sulsul-navbar-links a[title="Buscar"]::before {
+content:"\f002";
+}
+
+/* Miembros */
+.sulsul-navbar-links a[href*="/memberlist"]::before,
+.sulsul-navbar-links a[title="Miembros"]::before {
+content:"\f007";
+font-weight:400;
+}
+
+/* Grupos */
+.sulsul-navbar-links a[href*="/groups"]::before,
+.sulsul-navbar-links a[title="Grupos de Usuarios"]::before {
+content:"\f0c0";
+}
+
+/* Perfil */
+.sulsul-navbar-links a[href*="/profile"]::before,
+.sulsul-navbar-links a[title="Perfil"]::before {
+content:"\f2bd";
+font-weight:400;
+}
+
+/* Mensajería */
+.sulsul-navbar-links a[href*="/privmsg"]::before,
+.sulsul-navbar-links a[title="Mensajería"]::before,
+.sulsul-navbar-links a[title="Mensajeria"]::before {
+content:"\f0e0";
+font-weight:400;
+}
+
+/* Registrarse */
+.sulsul-navbar-links a[href*="/register"]::before,
+.sulsul-navbar-links a[title="Registrarse"]::before {
+content:"\f234";
+}
+
+/* Conectarse */
+.sulsul-navbar-links a[href*="/login"]::before,
+.sulsul-navbar-links a[title="Conectarse"]::before {
+content:"\f2f6";
+}
+
+/* Desconectarse */
+.sulsul-navbar-links a[href*="/login?logout"]::before,
+.sulsul-navbar-links a[title*="Desconectarse"]::before {
+content:"\f2f5";
+}
+
+/****************************************
+  BOTONES INFERIORES
+****************************************/
 
 .sulsul-theme-toggle,
 .sulsul-nav-up {
-width:42px;
-height:42px;
+width:34px;
+height:34px;
 display:flex;
 align-items:center;
 justify-content:center;
+background:var(--surface);
 border:1px solid var(--line);
-background:var(--bg);
-color:var(--text);
+color:var(--text-soft);
 font-family:var(--fuente-ui);
-font-size:var(--size-body);
+font-size:0;
 line-height:1;
+padding:0;
+}
+
+.sulsul-theme-toggle::before {
+font-family:"Font Awesome 6 Free";
+font-weight:400;
+font-size:13px;
+content:"\f186";
+}
+
+body.dark-mode .sulsul-theme-toggle::before {
+content:"\f185";
+font-weight:900;
+}
+
+.sulsul-nav-up::before {
+font-family:"Font Awesome 6 Free";
+font-weight:900;
+font-size:13px;
+content:"\f062";
 }
 
 .sulsul-theme-toggle:hover,
 .sulsul-nav-up:hover {
 background:var(--accent);
+border-color:var(--accent);
 color:var(--selection-text);
 }
-
 /****************************************
   ZONA DERECHA DEL FORO
 ****************************************/
