@@ -10,7 +10,7 @@ font-display:swap;
 
 /*** FUENTES ***/
 
---fuente-titulo:'Brunsun';
+--fuente-titulo:'Brunson';
 --fuente-cuerpo:'Helvetica';
 --fuente-ui:'Helvetica';
 
