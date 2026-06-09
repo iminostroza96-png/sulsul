@@ -1765,6 +1765,7 @@ font-size:36px;
 
 /****************************************
   SULSUL — INDEX BODY + TABLÓN
+  Versión integrada tipo panel / referencias
 ****************************************/
 
 .sulsul-index {
@@ -1772,6 +1773,27 @@ width:100%;
 display:flex;
 flex-direction:column;
 gap:28px;
+}
+
+/****************************************
+  OCULTAR WIDGETS NATIVOS SUELTOS
+  Evita que "Mensajes / Mi perfil" quede flotando arriba
+****************************************/
+
+.sulsul-content > .module,
+.sulsul-content > .panel,
+.sulsul-content #wrap > .module,
+.sulsul-content #wrap > .panel,
+.sulsul-content #page-body > .module,
+.sulsul-content #page-body > .panel {
+display:none!important;
+}
+
+.sulsul-latest-box .module,
+.sulsul-latest-box .panel,
+.sulsul-account-widget .module,
+.sulsul-account-widget .panel {
+display:block!important;
 }
 
 /****************************************
@@ -1783,7 +1805,7 @@ width:100%;
 display:grid;
 grid-template-columns:repeat(2, minmax(0, 1fr));
 gap:18px;
-padding:0 0 22px;
+padding:0 0 18px;
 border-bottom:1px solid var(--line);
 }
 
@@ -1791,19 +1813,19 @@ border-bottom:1px solid var(--line);
 .sulsul-index-visit {
 display:flex;
 align-items:center;
-gap:10px;
+gap:9px;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:800;
-letter-spacing:.12em;
+font-size:10px;
+font-weight:900;
+letter-spacing:.16em;
 text-transform:uppercase;
 color:var(--text-soft);
 }
 
 .sulsul-index-date i,
 .sulsul-index-visit i {
+font-size:12px;
 color:var(--accent);
-font-size:13px;
 }
 
 .sulsul-index-visit {
@@ -1811,10 +1833,11 @@ justify-content:flex-end;
 }
 
 /****************************************
-  LOGIN BOX
+  LOGIN / ADMIN
 ****************************************/
 
-.sulsul-loginbox {
+.sulsul-loginbox,
+.sulsul-adminpanel {
 width:100%;
 background:var(--surface);
 border:1px solid var(--line);
@@ -1835,6 +1858,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 border:1px solid var(--line);
+background:var(--bg);
 color:var(--accent);
 font-size:15px;
 }
@@ -1851,9 +1875,9 @@ color:var(--text);
 .sulsul-box-head span {
 display:block;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:800;
-letter-spacing:.12em;
+font-size:10px;
+font-weight:900;
+letter-spacing:.14em;
 text-transform:uppercase;
 color:var(--text-soft);
 }
@@ -1873,8 +1897,8 @@ gap:6px;
 
 .sulsul-login-form label > span {
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:800;
+font-size:10px;
+font-weight:900;
 letter-spacing:.12em;
 text-transform:uppercase;
 color:var(--text-soft);
@@ -1893,15 +1917,11 @@ color:var(--text);
 
 .sulsul-login-check {
 height:36px;
-display:flex !important;
-flex-direction:row !important;
+display:flex!important;
+flex-direction:row!important;
 align-items:center;
-gap:8px !important;
+gap:8px!important;
 white-space:nowrap;
-}
-
-.sulsul-login-check input {
-accent-color:var(--accent);
 }
 
 .sulsul-login-form input.mainoption,
@@ -1911,23 +1931,17 @@ background:var(--accent);
 border:1px solid var(--accent);
 padding:0 18px;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.14em;
 text-transform:uppercase;
 color:var(--selection-text);
 }
 
-/****************************************
-  ANUNCIO ADMINISTRATIVO
-****************************************/
-
 .sulsul-adminpanel {
-width:100%;
 display:grid;
-grid-template-columns:86px minmax(0, 1fr);
-background:var(--surface);
-border:1px solid var(--line);
+grid-template-columns:82px minmax(0, 1fr);
+padding:0;
 overflow:hidden;
 }
 
@@ -1950,7 +1964,7 @@ font-size:20px;
 writing-mode:vertical-rl;
 transform:rotate(180deg);
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
 letter-spacing:.16em;
 text-transform:uppercase;
@@ -1980,16 +1994,17 @@ color:var(--text-soft);
 }
 
 /****************************************
-  TABLÓN GENERAL
+  TABLÓN GENERAL — PANEL INTEGRADO
 ****************************************/
 
 .sulsul-dashboard {
+--dash-gap:0px;
 width:100%;
 border:1px solid var(--line);
 background:
-linear-gradient(135deg, rgba(0,0,0,.08), transparent 42%),
+linear-gradient(135deg, var(--accent-soft), transparent 34%),
 var(--surface);
-padding:28px;
+padding:0;
 position:relative;
 overflow:hidden;
 }
@@ -1999,9 +2014,10 @@ content:"";
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at 20% 10%, var(--accent-soft), transparent 32%),
-radial-gradient(circle at 80% 80%, var(--accent-soft), transparent 28%);
-opacity:.65;
+linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), var(--line) calc(100% - 1px)),
+linear-gradient(180deg, transparent 0, transparent calc(100% - 1px), var(--line) calc(100% - 1px));
+background-size:38px 38px;
+opacity:.16;
 pointer-events:none;
 }
 
@@ -2010,40 +2026,43 @@ position:relative;
 z-index:2;
 }
 
+/****************************************
+  HEADER DEL TABLÓN
+****************************************/
+
 .sulsul-dashboard-header {
-display:flex;
+min-height:118px;
+display:grid;
+grid-template-columns:92px minmax(0, 1fr);
 align-items:center;
-justify-content:center;
-gap:18px;
-text-align:center;
-padding:8px 0 28px;
+gap:0;
 border-bottom:1px solid var(--line);
-margin-bottom:24px;
+text-align:left;
 }
 
 .sulsul-dashboard-mark {
-width:52px;
-height:52px;
+width:100%;
+height:100%;
+min-height:118px;
 display:flex;
 align-items:center;
 justify-content:center;
-border:1px solid var(--line);
+border-right:1px solid var(--line);
 background:var(--bg);
 color:var(--accent);
-font-size:24px;
-transform:rotate(45deg);
+font-size:28px;
 }
 
-.sulsul-dashboard-mark i {
-transform:rotate(-45deg);
+.sulsul-dashboard-title {
+padding:26px 34px;
 }
 
 .sulsul-dashboard-title span {
 display:block;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
-letter-spacing:.28em;
+letter-spacing:.32em;
 text-transform:uppercase;
 color:var(--accent);
 margin-bottom:8px;
@@ -2052,9 +2071,9 @@ margin-bottom:8px;
 .sulsul-dashboard-title h2 {
 margin:0;
 font-family:var(--fuente-titulo);
-font-size:clamp(42px, 6vw, 82px);
+font-size:clamp(46px, 6vw, 78px);
 font-weight:400;
-line-height:.85;
+line-height:.82;
 text-transform:uppercase;
 color:var(--text);
 }
@@ -2062,39 +2081,41 @@ color:var(--text);
 .sulsul-dashboard-title p {
 margin:10px 0 0;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:800;
-letter-spacing:.12em;
+font-size:10px;
+font-weight:900;
+letter-spacing:.14em;
 text-transform:uppercase;
 color:var(--text-soft);
 }
 
+/****************************************
+  GRILLA DEL TABLÓN
+****************************************/
+
 .sulsul-dashboard-grid {
 display:grid;
-grid-template-columns:1.15fr .85fr;
+grid-template-columns:1fr 1fr 1.1fr;
 grid-template-areas:
-"latest searches"
-"links calendar"
-"weather account";
-gap:18px;
+"links links latest"
+"searches calendar latest"
+"weather calendar account";
+gap:0;
+border-top:0;
 }
 
 .sulsul-dash-card {
 min-width:0;
-background:color-mix(in srgb, var(--surface) 88%, var(--bg));
-border:1px solid var(--line);
-padding:18px;
+background:transparent;
+border:0;
+border-right:1px solid var(--line);
+border-bottom:1px solid var(--line);
+padding:20px;
 position:relative;
 overflow:hidden;
 }
 
 .sulsul-dash-card::before {
-content:"";
-position:absolute;
-inset:8px;
-border:1px solid var(--line);
-opacity:.65;
-pointer-events:none;
+content:none;
 }
 
 .sulsul-dash-card > * {
@@ -2104,27 +2125,36 @@ z-index:2;
 
 .sulsul-dash-latest {
 grid-area:latest;
-min-height:360px;
+min-height:520px;
+border-right:0;
 }
 
 .sulsul-dash-searches {
 grid-area:searches;
+min-height:230px;
 }
 
 .sulsul-dash-links {
 grid-area:links;
+min-height:120px;
 }
 
 .sulsul-dash-calendar {
 grid-area:calendar;
+min-height:390px;
 }
 
 .sulsul-dash-weather {
 grid-area:weather;
+min-height:220px;
+border-bottom:0;
 }
 
 .sulsul-dash-account {
 grid-area:account;
+min-height:220px;
+border-right:0;
+border-bottom:0;
 }
 
 .sulsul-dash-head {
@@ -2135,15 +2165,15 @@ margin-bottom:16px;
 }
 
 .sulsul-dash-head > i {
-width:34px;
-height:34px;
+width:32px;
+height:32px;
 display:flex;
 align-items:center;
 justify-content:center;
 border:1px solid var(--line);
 background:var(--bg);
 color:var(--accent);
-font-size:14px;
+font-size:13px;
 }
 
 .sulsul-dash-head b {
@@ -2158,37 +2188,37 @@ color:var(--text);
 .sulsul-dash-head span {
 display:block;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
-letter-spacing:.13em;
+letter-spacing:.16em;
 text-transform:uppercase;
 color:var(--accent);
 }
 
 /****************************************
-  ÚLTIMOS TEMAS
+  ÚLTIMOS TEMAS — COLUMNA DERECHA
 ****************************************/
 
 .sulsul-latest-box {
-height:300px;
+height:450px;
 overflow:auto;
-padding-right:6px;
+padding-right:8px;
 }
 
 .sulsul-moved-latest {
-width:100% !important;
-height:auto !important;
-margin:0 !important;
-padding:0 !important;
-background:transparent !important;
-border:0 !important;
-box-shadow:none !important;
+width:100%!important;
+height:auto!important;
+margin:0!important;
+padding:0!important;
+background:transparent!important;
+border:0!important;
+box-shadow:none!important;
 }
 
 .sulsul-moved-latest .h3,
 .sulsul-moved-latest h3,
 .sulsul-moved-latest .module-title {
-display:none !important;
+display:none!important;
 }
 
 .sulsul-moved-latest ul,
@@ -2204,20 +2234,24 @@ padding:0;
 .sulsul-moved-latest .row,
 .sulsul-moved-latest .mod-recent-row {
 display:block;
-padding:13px 0;
+padding:15px 0;
 border-bottom:1px solid var(--line);
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:800;
-letter-spacing:.05em;
+font-size:9px;
+font-weight:900;
+letter-spacing:.08em;
 text-transform:uppercase;
 color:var(--text-soft);
+}
+
+.sulsul-moved-latest li::marker {
+content:"";
 }
 
 .sulsul-moved-latest a {
 font-family:var(--fuente-cuerpo);
 font-size:15px;
-font-weight:800;
+font-weight:900;
 letter-spacing:0;
 text-transform:none;
 color:var(--text);
@@ -2232,7 +2266,7 @@ color:var(--accent);
 ****************************************/
 
 .sulsul-board-placeholder {
-min-height:160px;
+min-height:130px;
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -2240,9 +2274,9 @@ justify-content:center;
 gap:10px;
 border:1px dashed var(--line);
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.14em;
 text-transform:uppercase;
 color:var(--text-soft);
 }
@@ -2253,40 +2287,60 @@ color:var(--accent);
 }
 
 /****************************************
-  BÚSQUEDAS
+  BÚSQUEDAS — SIN IMÁGENES ROTAS
 ****************************************/
 
 .sulsul-search-grid {
 display:grid;
-grid-template-columns:1fr;
+grid-template-columns:repeat(3, minmax(0, 1fr));
 gap:10px;
 }
 
 .sulsul-search-item {
-min-height:86px;
+min-height:132px;
 display:flex;
 flex-direction:column;
 justify-content:flex-end;
-gap:4px;
-padding:16px;
+gap:5px;
+padding:15px;
 border:1px solid var(--line);
 background:
-linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.16)),
-var(--search-img);
+linear-gradient(135deg, rgba(0,0,0,.16), transparent 46%),
+linear-gradient(180deg, transparent, var(--accent-soft)),
+var(--bg)!important;
 background-size:cover;
 background-position:center;
-filter:grayscale(1);
+filter:none;
 position:relative;
 overflow:hidden;
+}
+
+body.dark-mode .sulsul-search-item {
+background:
+linear-gradient(135deg, rgba(255,255,255,.04), transparent 46%),
+linear-gradient(180deg, transparent, var(--accent-soft)),
+var(--bg)!important;
 }
 
 .sulsul-search-item::before {
 content:"";
 position:absolute;
-inset:0;
-background:var(--overlay);
-mix-blend-mode:multiply;
-opacity:.35;
+inset:12px;
+border:1px solid var(--line);
+opacity:.65;
+background:none;
+mix-blend-mode:normal;
+}
+
+.sulsul-search-item::after {
+content:"";
+position:absolute;
+top:16px;
+right:16px;
+width:34px;
+height:34px;
+border:1px solid var(--line);
+background:var(--surface);
 }
 
 .sulsul-search-item > * {
@@ -2296,54 +2350,59 @@ z-index:2;
 
 .sulsul-search-item span {
 font-family:var(--fuente-titulo);
-font-size:24px;
-line-height:1;
+font-size:27px;
+line-height:.9;
 text-transform:uppercase;
-color:#fff;
+color:var(--text);
 }
 
 .sulsul-search-item b {
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.13em;
 text-transform:uppercase;
 color:var(--accent);
 }
 
 /****************************************
-  LINKS RÁPIDOS
+  LINKS RÁPIDOS — BARRA SUPERIOR DEL PANEL
 ****************************************/
 
 .sulsul-quicklinks {
 display:grid;
-grid-template-columns:repeat(3, minmax(0, 1fr));
-gap:10px;
+grid-template-columns:repeat(6, minmax(0, 1fr));
+gap:0;
+border:1px solid var(--line);
 }
 
 .sulsul-quicklinks a {
-min-height:74px;
+min-height:64px;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-gap:8px;
-border:1px solid var(--line);
+gap:7px;
+border-right:1px solid var(--line);
 background:var(--bg);
 text-align:center;
 color:var(--text-soft);
 }
 
+.sulsul-quicklinks a:last-child {
+border-right:0;
+}
+
 .sulsul-quicklinks a i {
-font-size:16px;
+font-size:15px;
 color:var(--accent);
 }
 
 .sulsul-quicklinks a span {
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.13em;
 text-transform:uppercase;
 }
 
@@ -2358,7 +2417,7 @@ color:var(--text);
 
 .sulsul-tooltip {
 position:fixed;
-z-index: 999;
+z-index:999;
 max-width:240px;
 padding:10px 12px;
 background:var(--text);
@@ -2388,14 +2447,16 @@ transform:translateY(0);
 .sulsul-calendar-tabs {
 display:grid;
 grid-template-columns:repeat(4, minmax(0, 1fr));
-gap:8px;
+gap:0;
+border:1px solid var(--line);
 margin-bottom:14px;
 }
 
 .sulsul-calendar-tabs button {
 min-height:58px;
 background:var(--bg);
-border:1px solid var(--line);
+border:0;
+border-right:1px solid var(--line);
 color:var(--text-soft);
 display:flex;
 flex-direction:column;
@@ -2405,16 +2466,20 @@ gap:2px;
 padding:8px;
 }
 
+.sulsul-calendar-tabs button:last-child {
+border-right:0;
+}
+
 .sulsul-calendar-tabs button span {
 font-family:var(--fuente-titulo);
-font-size:26px;
+font-size:25px;
 line-height:1;
 color:var(--text);
 }
 
 .sulsul-calendar-tabs button b {
 font-family:var(--fuente-ui);
-font-size:9px;
+font-size:8px;
 font-weight:900;
 letter-spacing:.12em;
 text-transform:uppercase;
@@ -2423,7 +2488,6 @@ color:var(--text-soft);
 
 .sulsul-calendar-tabs button.is-active {
 background:var(--accent);
-border-color:var(--accent);
 color:var(--selection-text);
 }
 
@@ -2433,10 +2497,10 @@ color:var(--selection-text);
 }
 
 .sulsul-calendar-panels {
-min-height:188px;
+min-height:235px;
 border:1px solid var(--line);
 background:var(--bg);
-padding:18px;
+padding:20px;
 }
 
 .sulsul-calendar-panel {
@@ -2450,7 +2514,7 @@ display:block;
 .sulsul-calendar-panel span {
 display:block;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
 letter-spacing:.16em;
 text-transform:uppercase;
@@ -2461,15 +2525,15 @@ margin-bottom:8px;
 .sulsul-calendar-panel h3 {
 margin:0 0 10px;
 font-family:var(--fuente-titulo);
-font-size:32px;
-line-height:1;
+font-size:34px;
+line-height:.95;
 text-transform:uppercase;
 color:var(--text);
 }
 
 .sulsul-calendar-panel p {
 margin:0;
-font-size:var(--size-body);
+font-size:12px;
 line-height:1.6;
 color:var(--text-soft);
 }
@@ -2478,60 +2542,63 @@ color:var(--text-soft);
 display:inline-flex;
 margin-top:14px;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.13em;
 text-transform:uppercase;
 color:var(--accent);
 }
 
 /****************************************
-  CLIMA PLACEHOLDER
+  CLIMA PLACEHOLDER — SIN IMAGEN EXTERNA
 ****************************************/
 
 .sulsul-weather-tabs {
 display:flex;
 flex-wrap:wrap;
-gap:8px;
+gap:0;
+border:1px solid var(--line);
 margin-bottom:12px;
 }
 
 .sulsul-weather-tabs button {
-height:30px;
+height:32px;
 background:var(--bg);
-border:1px solid var(--line);
+border:0;
+border-right:1px solid var(--line);
 padding:0 12px;
 font-family:var(--fuente-ui);
-font-size:10px;
+font-size:9px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.13em;
 text-transform:uppercase;
 color:var(--text-soft);
 }
 
+.sulsul-weather-tabs button:last-child {
+border-right:0;
+}
+
 .sulsul-weather-tabs button.is-active {
 background:var(--accent);
-border-color:var(--accent);
 color:var(--selection-text);
 }
 
 .sulsul-weather-panels {
 position:relative;
-min-height:190px;
+min-height:140px;
 }
 
 .sulsul-weather-panel {
 display:none;
-min-height:190px;
-padding:20px;
+min-height:140px;
+padding:18px;
 border:1px solid var(--line);
 background:
-linear-gradient(90deg, rgba(0,0,0,.64), rgba(0,0,0,.24)),
-var(--weather-img);
-background-size:cover;
-background-position:center;
-filter:grayscale(1);
-color:#fff;
+linear-gradient(135deg, var(--accent-soft), transparent 46%),
+var(--bg)!important;
+color:var(--text);
+filter:none;
 }
 
 .sulsul-weather-panel.is-active {
@@ -2542,7 +2609,7 @@ justify-content:flex-end;
 
 .sulsul-weather-panel span {
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
 letter-spacing:.16em;
 text-transform:uppercase;
@@ -2551,49 +2618,49 @@ color:var(--accent);
 
 .sulsul-weather-panel strong {
 font-family:var(--fuente-titulo);
-font-size:56px;
-line-height:.9;
-color:#fff;
+font-size:54px;
+line-height:.82;
+color:var(--text);
 }
 
 .sulsul-weather-panel b {
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:9px;
 font-weight:900;
-letter-spacing:.12em;
+letter-spacing:.13em;
 text-transform:uppercase;
-color:#fff;
+color:var(--text);
 }
 
 .sulsul-weather-panel p {
 max-width:320px;
 margin:8px 0 0;
-font-size:var(--size-small);
+font-size:11px;
 line-height:1.5;
-color:rgba(255,255,255,.72);
+color:var(--text-soft);
 }
 
 /****************************************
-  CUENTA / LOGIN WIDGET
+  CUENTA
 ****************************************/
 
 .sulsul-account-widget {
-min-height:190px;
+min-height:140px;
 }
 
 .sulsul-moved-login {
-width:100% !important;
-margin:0 !important;
-padding:0 !important;
-background:transparent !important;
-border:0 !important;
-box-shadow:none !important;
+width:100%!important;
+margin:0!important;
+padding:0!important;
+background:transparent!important;
+border:0!important;
+box-shadow:none!important;
 }
 
 .sulsul-moved-login .h3,
 .sulsul-moved-login h3,
 .sulsul-moved-login .module-title {
-display:none !important;
+display:none!important;
 }
 
 .sulsul-moved-login form {
@@ -2618,7 +2685,7 @@ background:var(--accent);
 border:1px solid var(--accent);
 padding:0 14px;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
 letter-spacing:.12em;
 text-transform:uppercase;
@@ -2634,7 +2701,7 @@ width:100%;
 }
 
 /****************************************
-  QUIÉN ESTÁ EN LÍNEA
+  QUIÉN ESTÁ EN LÍNEA / ESTADÍSTICAS
 ****************************************/
 
 .sulsul-online,
@@ -2692,7 +2759,7 @@ gap:16px;
 .sulsul-online-extra,
 .sulsul-group-legend,
 .sulsul-chatters {
-font-size:var(--size-body);
+font-size:12px;
 line-height:1.65;
 color:var(--text-soft);
 }
@@ -2711,8 +2778,8 @@ gap:10px;
 padding-top:14px;
 border-top:1px solid var(--line);
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:800;
+font-size:10px;
+font-weight:900;
 letter-spacing:.08em;
 text-transform:uppercase;
 }
@@ -2731,10 +2798,6 @@ background:var(--bg);
 color:var(--accent);
 font-size:54px;
 }
-
-/****************************************
-  ESTADÍSTICAS
-****************************************/
 
 .sulsul-stats-grid {
 display:grid;
@@ -2761,7 +2824,7 @@ color:var(--accent);
 
 .sulsul-statbox span {
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
 letter-spacing:.1em;
 text-transform:uppercase;
@@ -2793,7 +2856,7 @@ display:flex;
 align-items:center;
 gap:8px;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
+font-size:10px;
 font-weight:900;
 letter-spacing:.1em;
 text-transform:uppercase;
@@ -2813,16 +2876,36 @@ color:var(--accent);
 .sulsul-dashboard-grid {
 grid-template-columns:1fr;
 grid-template-areas:
+"links"
 "latest"
 "searches"
-"links"
 "calendar"
 "weather"
 "account";
 }
 
+.sulsul-dash-card {
+border-right:0;
+}
+
+.sulsul-dash-latest {
+min-height:auto;
+}
+
 .sulsul-latest-box {
 height:260px;
+}
+
+.sulsul-search-grid {
+grid-template-columns:1fr;
+}
+
+.sulsul-quicklinks {
+grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
+.sulsul-quicklinks a:nth-child(3) {
+border-right:0;
 }
 
 .sulsul-online-grid {
@@ -2849,20 +2932,40 @@ justify-content:flex-start;
 grid-template-columns:1fr;
 }
 
-.sulsul-dashboard {
-padding:18px;
+.sulsul-dashboard-header {
+grid-template-columns:1fr;
 }
 
-.sulsul-dashboard-header {
-flex-direction:column;
+.sulsul-dashboard-mark {
+min-height:62px;
+border-right:0;
+border-bottom:1px solid var(--line);
+}
+
+.sulsul-dashboard-title {
+padding:24px;
+text-align:center;
 }
 
 .sulsul-quicklinks {
 grid-template-columns:repeat(2, minmax(0, 1fr));
 }
 
+.sulsul-quicklinks a,
+.sulsul-quicklinks a:nth-child(3) {
+border-right:1px solid var(--line);
+}
+
+.sulsul-quicklinks a:nth-child(2n) {
+border-right:0;
+}
+
 .sulsul-calendar-tabs {
 grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.sulsul-calendar-tabs button:nth-child(2n) {
+border-right:0;
 }
 
 .sulsul-stats-grid {
@@ -2875,6 +2978,17 @@ grid-template-columns:1fr;
 
 .sulsul-quicklinks {
 grid-template-columns:1fr;
+}
+
+.sulsul-quicklinks a,
+.sulsul-quicklinks a:nth-child(2n),
+.sulsul-quicklinks a:nth-child(3) {
+border-right:0;
+border-bottom:1px solid var(--line);
+}
+
+.sulsul-quicklinks a:last-child {
+border-bottom:0;
 }
 
 .sulsul-forum-legend {
