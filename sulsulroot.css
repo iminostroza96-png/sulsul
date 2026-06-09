@@ -700,3 +700,438 @@ padding-bottom:26px;
 .sulsul-admin-link a {
 color:var(--accent);
 }
+/****************************************
+  SULSUL — INDEX BODY
+****************************************/
+
+.sulsul-index {
+width:100%;
+display:flex;
+flex-direction:column;
+gap:28px;
+}
+
+/****************************************
+  META SUPERIOR
+****************************************/
+
+.sulsul-index-meta {
+width:100%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+border-bottom:1px solid var(--line);
+padding-bottom:18px;
+}
+
+.sulsul-index-date,
+.sulsul-index-visit {
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.sulsul-index-meta i {
+color:var(--accent);
+}
+
+/****************************************
+  LOGIN BOX
+****************************************/
+
+.sulsul-loginbox {
+width:100%;
+background:var(--bg);
+border:1px solid var(--line);
+padding:24px;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.sulsul-box-head {
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.sulsul-box-head i {
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:var(--surface);
+border:1px solid var(--line);
+color:var(--accent);
+font-size:18px;
+}
+
+.sulsul-box-head b {
+display:block;
+font-family:var(--fuente-titulo);
+font-size:var(--size-title);
+font-weight:400;
+line-height:1;
+color:var(--title);
+}
+
+.sulsul-box-head span {
+display:block;
+margin-top:4px;
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-login-form {
+display:grid;
+grid-template-columns:1fr 1fr auto auto;
+align-items:end;
+gap:14px;
+}
+
+.sulsul-login-form label {
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+.sulsul-login-form label span {
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-login-check {
+flex-direction:row!important;
+align-items:center;
+padding-bottom:8px;
+}
+
+/****************************************
+  PANEL ADMIN / TABLÓN SIMPLE
+****************************************/
+
+.sulsul-adminpanel {
+width:100%;
+display:grid;
+grid-template-columns:150px 1fr;
+background:var(--bg);
+border:1px solid var(--line);
+min-height:180px;
+}
+
+.sulsul-adminpanel-side {
+border-right:1px solid var(--line);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:12px;
+color:var(--accent);
+}
+
+.sulsul-adminpanel-side i {
+font-size:30px;
+}
+
+.sulsul-adminpanel-side span {
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-adminpanel-content {
+padding:34px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:18px;
+}
+
+.sulsul-admin-title {
+font-family:var(--fuente-titulo);
+font-size:clamp(30px, 5vw, 64px);
+font-weight:400;
+line-height:.95;
+color:var(--title);
+}
+
+.sulsul-admin-text {
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+line-height:1.65;
+color:var(--text-soft);
+}
+
+/****************************************
+  BOARD CONTAINER
+****************************************/
+
+.sulsul-board {
+width:100%;
+}
+
+/****************************************
+  TÍTULOS DE SECCIÓN
+****************************************/
+
+.sulsul-section-title {
+width:100%;
+display:flex;
+align-items:center;
+gap:12px;
+font-family:var(--fuente-ui);
+font-size:var(--size-subtitle);
+font-weight:700;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--text);
+border-bottom:1px solid var(--line);
+padding-bottom:14px;
+}
+
+.sulsul-section-title i {
+color:var(--accent);
+}
+
+.sulsul-section-title a {
+color:var(--text);
+}
+
+.sulsul-section-title a:hover {
+color:var(--accent);
+}
+
+.sulsul-section-title.mini {
+font-size:var(--size-small);
+padding-bottom:10px;
+}
+
+/****************************************
+  ONLINE
+****************************************/
+
+.sulsul-online {
+width:100%;
+background:var(--bg);
+border:1px solid var(--line);
+padding:28px;
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.sulsul-online-grid {
+display:grid;
+grid-template-columns:1fr 160px;
+gap:28px;
+align-items:stretch;
+}
+
+.sulsul-online-main {
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.sulsul-online-text,
+.sulsul-online-extra,
+.sulsul-online-users {
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+line-height:1.65;
+color:var(--text-soft);
+}
+
+.sulsul-online-users a {
+font-weight:700;
+color:var(--accent);
+}
+
+.sulsul-group-legend {
+display:flex;
+align-items:flex-start;
+gap:10px;
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+border-top:1px solid var(--line);
+padding-top:16px;
+}
+
+.sulsul-group-legend i {
+color:var(--accent);
+margin-top:2px;
+}
+
+.sulsul-online-icon {
+background:var(--surface);
+border:1px solid var(--line);
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--accent);
+font-size:52px;
+}
+
+/****************************************
+  ESTADÍSTICAS
+****************************************/
+
+.sulsul-stats {
+width:100%;
+background:var(--bg);
+border:1px solid var(--line);
+padding:28px;
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.sulsul-stats-grid {
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:16px;
+}
+
+.sulsul-statbox {
+background:var(--surface);
+border:1px solid var(--line);
+padding:22px;
+display:flex;
+align-items:center;
+gap:14px;
+min-height:95px;
+}
+
+.sulsul-statbox i {
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:var(--bg);
+border:1px solid var(--line);
+color:var(--accent);
+font-size:18px;
+}
+
+.sulsul-statbox span {
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+line-height:1.5;
+color:var(--text-soft);
+}
+
+.sulsul-statbox a {
+font-weight:700;
+color:var(--accent);
+}
+
+/****************************************
+  CHATBOX INFO
+****************************************/
+
+.sulsul-chatbox-info {
+border-top:1px solid var(--line);
+padding-top:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.sulsul-chatters {
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+line-height:1.6;
+color:var(--text-soft);
+}
+
+/****************************************
+  LEYENDA DE FOROS
+****************************************/
+
+.sulsul-forum-legend {
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:28px;
+border-top:1px solid var(--line);
+padding-top:20px;
+}
+
+.sulsul-legend-item {
+display:flex;
+align-items:center;
+gap:8px;
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-legend-item i {
+color:var(--accent);
+font-size:14px;
+}
+
+/****************************************
+  RESPONSIVE BASE INDEX
+****************************************/
+
+@media (max-width:900px) {
+
+.sulsul-index-meta,
+.sulsul-online-grid,
+.sulsul-stats-grid,
+.sulsul-adminpanel,
+.sulsul-login-form {
+grid-template-columns:1fr;
+display:grid;
+}
+
+.sulsul-index-meta {
+align-items:start;
+}
+
+.sulsul-adminpanel-side {
+border-right:0;
+border-bottom:1px solid var(--line);
+padding:24px;
+}
+
+.sulsul-online-icon {
+min-height:120px;
+}
+
+.sulsul-forum-legend {
+flex-direction:column;
+align-items:flex-start;
+gap:12px;
+}
+
+}
