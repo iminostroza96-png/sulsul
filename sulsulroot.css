@@ -856,7 +856,7 @@ font-family:var(--fuente-titulo);
 font-size:var(--size-title);
 font-weight:700;
 text-transform:uppercase;
-letter-spacing:2em;
+letter-spacing:.09em;
 color:var(--text);
 border-bottom:1px solid var(--line);
 }
