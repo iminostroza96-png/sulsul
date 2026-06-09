@@ -1,3 +1,12 @@
+/****************************************
+  SULSUL — ROOT GENERAL
+  phpBB3 Foroactivo
+****************************************/
+
+/****************************************
+  FUENTE LOCAL
+****************************************/
+
 @font-face {
 font-family:'Brunson';
 src:url('./Brunson.ttf') format('truetype');
@@ -5,6 +14,11 @@ font-weight:400;
 font-style:normal;
 font-display:swap;
 }
+
+/****************************************
+  VARIABLES BASE
+  No cambian entre claro/oscuro
+****************************************/
 
 :root {
 
@@ -25,10 +39,11 @@ font-display:swap;
 
 --nav-width:86px;
 --header-height:100vh;
+--header-content-width:900px;
+
 --forum-width:1180px;
---forum-gap:42px;
---forum-padding:48px;
---content-padding:34px;
+--forum-padding:54px;
+--content-padding:42px;
 
 /*** RADIOS ***/
 
@@ -50,52 +65,56 @@ font-display:swap;
 
 /****************************************
   MODO CLARO
-  Máximo 4 tonos base:
-  1. fondo
-  2. texto
-  3. acento
-  4. línea/sombra suave
 ****************************************/
 
 body.light-mode {
 
+/*** 4 tonos principales ***/
+
 --bg:#F2F2F2;
 --surface:#FFFFFF;
 --text:#1A1A1A;
---text-soft:rgba(26,26,26,.62);
-
---title:#788417;
 --accent:#788417;
---accent-soft:rgba(120,132,23,.18);
+
+/*** Derivados del sistema ***/
+
+--text-soft:rgba(26,26,26,.62);
+--title:var(--accent);
+--accent-soft:rgba(120,132,23,.16);
 
 --line:rgba(26,26,26,.12);
 --line-strong:rgba(26,26,26,.24);
 
 --shadow:0 20px 60px rgba(26,26,26,.08);
---overlay:rgba(255,255,255,.72);
+--overlay:rgba(242,242,242,.76);
 
---selection-bg:#788417;
---selection-text:#F2F2F2;
+--selection-bg:var(--accent);
+--selection-text:var(--bg);
+
+/*** Imágenes por defecto ***/
+/* Cambia estas URLs cuando tengas tus imágenes finales */
+
+--body-img:url('https://images.unsplash.com/photo-1478860409698-8707f313ee8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+--header-img:url('https://images.unsplash.com/photo-1543078615-d2a11bab60ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
 
 /****************************************
   MODO OSCURO
-  Máximo 4 tonos base:
-  1. fondo
-  2. texto
-  3. acento
-  4. línea/sombra suave
 ****************************************/
 
 body.dark-mode {
 
+/*** 4 tonos principales ***/
+
 --bg:#1A1A1A;
 --surface:#2B2C20;
 --text:#F2F2F2;
---text-soft:rgba(242,242,242,.62);
-
---title:#879956;
 --accent:#879956;
+
+/*** Derivados del sistema ***/
+
+--text-soft:rgba(242,242,242,.62);
+--title:var(--accent);
 --accent-soft:rgba(135,153,86,.18);
 
 --line:rgba(242,242,242,.12);
@@ -104,8 +123,14 @@ body.dark-mode {
 --shadow:0 20px 60px rgba(0,0,0,.35);
 --overlay:rgba(26,26,26,.72);
 
---selection-bg:#879956;
---selection-text:#1A1A1A;
+--selection-bg:var(--accent);
+--selection-text:var(--bg);
+
+/*** Imágenes por defecto ***/
+/* Cambia estas URLs cuando tengas tus imágenes finales */
+
+--body-img:url('https://images.unsplash.com/photo-1478860409698-8707f313ee8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+--header-img:url('https://images.unsplash.com/photo-1543078615-d2a11bab60ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
 
 /****************************************
@@ -147,7 +172,9 @@ color:var(--selection-text);
 
 /*** LINKS ***/
 
-a {
+a,
+a:link,
+a:visited {
 color:inherit;
 text-decoration:none;
 transition:var(--transition-fast);
@@ -204,28 +231,36 @@ scrollbar-color:var(--accent) var(--bg);
 }
 
 /****************************************
-  ESTRUCTURA GLOBAL DEL FORO
+  BODY FOROACTIVO + FONDO GENERAL
 ****************************************/
 
-/*** BODY FOROACTIVO ***/
-
 body#phpbb {
-background:var(--bg);
+background-color:var(--bg)!important;
+background-image:
+linear-gradient(var(--overlay), var(--overlay)),
+var(--body-img)!important;
+background-size:cover!important;
+background-position:center!important;
+background-attachment:fixed!important;
+background-repeat:no-repeat!important;
 color:var(--text);
 overflow-x:hidden;
 }
 
-/*** CONTENEDOR GENERAL FUTURO ***/
-/* Este lo usaremos cuando editemos overall_header */
+/****************************************
+  ESTRUCTURA GLOBAL
+****************************************/
 
 .sulsul-page {
 width:100%;
 min-height:100vh;
-background:var(--bg);
+background:transparent;
 color:var(--text);
 }
 
-/*** NAVBAR IZQUIERDA ***/
+/****************************************
+  NAVBAR IZQUIERDA
+****************************************/
 
 .sulsul-navbar {
 position:fixed;
@@ -233,6 +268,8 @@ top:0;
 left:0;
 z-index:var(--z-navbar);
 width:var(--nav-width);
+min-width:var(--nav-width);
+max-width:var(--nav-width);
 height:100vh;
 background:var(--surface);
 border-right:1px solid var(--line);
@@ -244,119 +281,6 @@ justify-content:space-between;
 padding:26px 0;
 }
 
-/*** ZONA DERECHA DEL FORO ***/
-
-.sulsul-site {
-width:calc(100% - var(--nav-width));
-min-height:100vh;
-margin-left:var(--nav-width);
-background:var(--bg);
-}
-
-/*** HEADER GRANDE ***/
-
-.sulsul-header {
-width:100%;
-min-height:var(--header-height);
-background:var(--bg);
-border-bottom:1px solid var(--line);
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-overflow:hidden;
-}
-
-/*** CUERPO DEL FORO ***/
-
-.sulsul-main {
-width:100%;
-min-height:100vh;
-background:var(--bg);
-padding:var(--forum-gap) var(--forum-padding);
-}
-
-/*** CONTENIDO REAL DEL FORO ***/
-
-.sulsul-content {
-width:min(var(--forum-width), 100%);
-margin:0 auto;
-background:var(--surface);
-border:1px solid var(--line);
-box-shadow:var(--shadow);
-padding:var(--content-padding);
-}
-
-/*** WRAP BASE DE FOROACTIVO ***/
-
-#wrap {
-width:min(var(--forum-width), 100%);
-margin:0 auto;
-background:transparent;
-border:0;
-box-shadow:none;
-padding:0;
-}
-
-/*** SI EL WRAP QUEDA DENTRO DE SULSUL-CONTENT ***/
-
-.sulsul-content #wrap {
-width:100%;
-min-width:0;
-}
-
-/****************************************
-  LIMPIEZA BASE PHPBB3 / FOROACTIVO
-****************************************/
-
-#page-header,
-#page-body,
-#page-footer,
-.panel,
-.module,
-.forabg,
-.forumbg,
-.bg1,
-.bg2,
-.bg3,
-.row1,
-.row2,
-.row3 {
-background:transparent;
-border:0;
-box-shadow:none;
-}
-
-ul,
-ol {
-margin:0;
-padding:0;
-}
-
-li {
-list-style:none;
-}
-
-table {
-border-collapse:collapse;
-border-spacing:0;
-}
-
-td,
-th {
-padding:0;
-}
-
-hr {
-border:0;
-border-top:1px solid var(--line);
-margin:24px 0;
-}
-
-/****************************************
-  SULSUL — NAVBAR Y HEADER BASE
-****************************************/
-
 .sulsul-navbar-top,
 .sulsul-navbar-links,
 .sulsul-navbar-bottom {
@@ -365,6 +289,12 @@ display:flex;
 flex-direction:column;
 align-items:center;
 gap:14px;
+}
+
+.sulsul-navbar-links {
+flex:1;
+justify-content:center;
+overflow:hidden;
 }
 
 .sulsul-nav-logo {
@@ -378,12 +308,6 @@ background:var(--bg);
 font-family:var(--fuente-titulo);
 font-size:var(--size-title);
 color:var(--title);
-}
-
-.sulsul-navbar-links {
-flex:1;
-justify-content:center;
-overflow:hidden;
 }
 
 .sulsul-navbar-links a {
@@ -429,8 +353,56 @@ background:var(--accent);
 color:var(--selection-text);
 }
 
+/****************************************
+  ZONA DERECHA DEL FORO
+****************************************/
+
+.sulsul-site {
+width:calc(100vw - var(--nav-width));
+max-width:calc(100vw - var(--nav-width));
+min-height:100vh;
+margin-left:var(--nav-width);
+background:transparent;
+overflow-x:hidden;
+}
+
+/****************************************
+  HEADER PRINCIPAL
+****************************************/
+
+.sulsul-header {
+width:100%;
+min-height:var(--header-height);
+background-color:var(--bg);
+background-image:
+linear-gradient(var(--overlay), var(--overlay)),
+var(--header-img);
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+border-bottom:1px solid var(--line);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+}
+
+.sulsul-header::before {
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, var(--accent-soft), transparent 34%),
+radial-gradient(circle at 80% 80%, var(--accent-soft), transparent 38%);
+pointer-events:none;
+z-index:1;
+}
+
 .sulsul-header-inner {
-width:min(760px, calc(100% - 80px));
+position:relative;
+z-index:2;
+width:min(var(--header-content-width), calc(100% - 80px));
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -444,19 +416,23 @@ font-family:var(--fuente-ui);
 font-size:var(--size-subtitle);
 font-weight:700;
 text-transform:uppercase;
-letter-spacing:.12em;
+letter-spacing:.16em;
 color:var(--text);
 }
 
 .sulsul-header-title {
 font-family:var(--fuente-titulo);
-font-size:clamp(48px, 10vw, 150px);
+font-size:clamp(46px, 8vw, 112px);
 font-weight:400;
-line-height:.85;
-letter-spacing:.02em;
+line-height:.9;
+letter-spacing:.01em;
 text-transform:none;
 color:var(--title);
 margin:0;
+max-width:100%;
+overflow-wrap:break-word;
+word-break:break-word;
+text-align:center;
 }
 
 .sulsul-header-subtitle {
@@ -469,14 +445,220 @@ text-transform:none;
 color:var(--text-soft);
 }
 
-/*** OCULTAMOS HEADER VIEJO TEMPORALMENTE ***/
+/****************************************
+  CUERPO DEL FORO
+****************************************/
 
-#page-header {
-display:none;
+.sulsul-main {
+width:100%;
+min-height:100vh;
+background:transparent;
+padding:var(--forum-padding);
+}
+
+.sulsul-content {
+width:100%;
+max-width:var(--forum-width);
+margin:0 auto;
+background:var(--surface);
+border:1px solid var(--line);
+box-shadow:var(--shadow);
+padding:var(--content-padding);
+overflow:hidden;
 }
 
 /****************************************
-  SULSUL — FOOTER FINAL
+  WRAP Y CONTENEDORES PHPBB3
+****************************************/
+
+#wrap {
+width:100%!important;
+max-width:100%!important;
+min-width:0!important;
+margin:0 auto!important;
+background:transparent!important;
+border:0!important;
+box-shadow:none!important;
+padding:0!important;
+}
+
+.sulsul-content #wrap,
+.sulsul-content #page-body,
+.sulsul-content #main,
+.sulsul-content #main-content {
+width:100%!important;
+max-width:100%!important;
+min-width:0!important;
+margin:0!important;
+padding:0!important;
+}
+
+/****************************************
+  LIMPIEZA BASE PHPBB3 / FOROACTIVO
+****************************************/
+
+#page-header {
+display:none!important;
+}
+
+#page-body,
+#page-footer,
+.panel,
+.module,
+.forabg,
+.forumbg,
+.bg1,
+.bg2,
+.bg3,
+.row1,
+.row2,
+.row3 {
+background:transparent!important;
+border:0!important;
+box-shadow:none!important;
+}
+
+ul,
+ol {
+margin:0;
+padding:0;
+}
+
+li {
+list-style:none;
+}
+
+table {
+border-collapse:collapse;
+border-spacing:0;
+}
+
+td,
+th {
+padding:0;
+}
+
+hr {
+border:0;
+border-top:1px solid var(--line);
+margin:24px 0;
+}
+
+/****************************************
+  LIMPIEZA VISUAL PHPBB3
+****************************************/
+
+.linklist,
+.linklist li,
+.navlinks,
+.navlinks li {
+color:var(--text-soft);
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+text-transform:uppercase;
+letter-spacing:.06em;
+}
+
+.topiclist,
+.topiclist.forums {
+background:transparent!important;
+}
+
+.topiclist li.row {
+background:var(--bg)!important;
+border-bottom:1px solid var(--line)!important;
+color:var(--text);
+}
+
+.topiclist li.row:hover {
+background:var(--accent-soft)!important;
+}
+
+.forumtitle,
+.topictitle,
+a.forumtitle,
+a.topictitle {
+font-family:var(--fuente-titulo);
+font-size:var(--size-title);
+font-weight:400;
+color:var(--title)!important;
+}
+
+dd,
+dt,
+li,
+p,
+.content,
+.panel,
+.module {
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+color:var(--text);
+}
+
+.h3,
+.table-title,
+.page-title {
+font-family:var(--fuente-ui);
+font-size:var(--size-subtitle);
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.08em;
+color:var(--text);
+border-bottom:1px solid var(--line);
+}
+
+/****************************************
+  FORMULARIOS BASE PHPBB3
+****************************************/
+
+.inputbox,
+input.post,
+textarea,
+select {
+background:var(--bg);
+border:1px solid var(--line);
+color:var(--text);
+font-family:var(--fuente-cuerpo);
+font-size:var(--size-body);
+padding:8px 10px;
+outline:none;
+}
+
+.inputbox:focus,
+input.post:focus,
+textarea:focus,
+select:focus {
+border-color:var(--accent);
+}
+
+.button1,
+.button2,
+button,
+input[type="submit"],
+input[type="button"] {
+background:var(--accent);
+border:1px solid var(--accent);
+color:var(--selection-text);
+font-family:var(--fuente-ui);
+font-size:var(--size-small);
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+padding:8px 12px;
+}
+
+.button1:hover,
+.button2:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+background:var(--bg);
+color:var(--accent);
+}
+
+/****************************************
+  FOOTER FINAL
 ****************************************/
 
 .sulsul-footer-links,
