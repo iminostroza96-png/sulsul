@@ -1396,7 +1396,7 @@ gap:12px;
 width:100%;
 display:flex;
 flex-direction:column;
-gap:34px;
+gap:30px;
 }
 
 /****************************************
@@ -1408,7 +1408,7 @@ width:100%;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:22px;
+gap:20px;
 font-family:var(--fuente-ui);
 font-size:var(--size-small);
 font-weight:700;
@@ -1418,22 +1418,22 @@ color:var(--text-soft);
 }
 
 .sulsul-index-actions-top {
-padding-bottom:26px;
+padding-bottom:22px;
 border-bottom:1px solid var(--line);
-margin-bottom:34px;
+margin-bottom:26px;
 }
 
 .sulsul-index-actions-bottom {
-padding-top:26px;
+padding-top:22px;
 border-top:1px solid var(--line);
-margin-top:34px;
+margin-top:26px;
 }
 
 .sulsul-index-links {
 display:flex;
 align-items:center;
 flex-wrap:wrap;
-gap:14px 20px;
+gap:12px 18px;
 }
 
 .sulsul-index-actions a {
@@ -1461,12 +1461,12 @@ width:100%;
 position:relative;
 display:flex;
 flex-direction:column;
-gap:20px;
+gap:16px;
 padding:0;
 }
 
 .sulsul-category + .sulsul-category {
-padding-top:16px;
+padding-top:8px;
 }
 
 .sulsul-category-header {
@@ -1475,17 +1475,17 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-gap:8px;
+gap:7px;
 text-align:center;
-padding:0 0 12px;
+padding:0 0 10px;
 border-bottom:1px solid var(--line);
 }
 
 .sulsul-category-kicker {
 font-family:var(--fuente-ui);
-font-size:10px;
+font-size:9px;
 font-weight:800;
-letter-spacing:.32em;
+letter-spacing:.28em;
 line-height:1;
 text-transform:uppercase;
 color:var(--accent);
@@ -1495,9 +1495,9 @@ color:var(--accent);
 display:flex;
 align-items:center;
 justify-content:center;
-gap:14px;
+gap:12px;
 font-family:var(--fuente-titulo);
-font-size:clamp(28px, 4.2vw, 52px);
+font-size:clamp(26px, 3.6vw, 42px);
 font-weight:400;
 line-height:.9;
 text-transform:uppercase;
@@ -1521,8 +1521,8 @@ color:var(--accent);
 }
 
 .sulsul-category-mark {
-width:18px;
-height:18px;
+width:14px;
+height:14px;
 display:inline-block;
 flex:0 0 auto;
 background:var(--accent);
@@ -1537,61 +1537,70 @@ transform:rotate(45deg);
 width:100%;
 display:grid;
 grid-template-columns:repeat(2, minmax(0, 1fr));
-gap:20px;
+gap:14px;
 align-items:stretch;
 }
 
+/****************************************
+  CARD BASE
+****************************************/
+
 .sulsul-forum-card {
---sulsul-forum-card-bg:linear-gradient(135deg, var(--surface), var(--bg));
 position:relative;
 isolation:isolate;
 overflow:hidden;
-min-height:220px;
+min-height:176px;
 display:grid;
-grid-template-columns:54px minmax(0, 1fr);
+grid-template-columns:46px minmax(0, 1fr);
 grid-template-rows:1fr auto;
-background:var(--sulsul-forum-card-bg);
+background:var(--surface);
 border:1px solid var(--line);
 color:var(--text);
-}
-
-.sulsul-forum-card:only-child,
-.sulsul-forum-card.has-pa-image:only-child {
-grid-column:1 / -1;
 }
 
 .sulsul-forum-card.sulsul-card-pending {
 background:var(--surface);
 }
 
-.sulsul-forum-card.has-pa-image {
-min-height:260px;
-}
-
 .sulsul-forum-card.no-pa-image {
-min-height:190px;
+background:
+radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 34%),
+linear-gradient(135deg, var(--surface), var(--bg));
 }
 
-.sulsul-forum-card::before {
+body.dark-mode .sulsul-forum-card.no-pa-image {
+background:
+radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 34%),
+linear-gradient(135deg, rgba(255,255,255,.035), rgba(0,0,0,.28));
+}
+
+.sulsul-forum-card.has-pa-image {
+min-height:205px;
+background:var(--surface);
+}
+
+.sulsul-forum-card.has-pa-image .sulsul-forum-visual {
+display:block;
+position:absolute;
+inset:0;
+z-index:-3;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+filter:grayscale(1);
+opacity:.46;
+}
+
+.sulsul-forum-card.has-pa-image::before {
 content:"";
 position:absolute;
 inset:0;
 z-index:-2;
 background:
-radial-gradient(circle at 20% 0%, var(--accent-soft), transparent 34%),
-linear-gradient(135deg, var(--surface), var(--bg));
-opacity:.95;
-}
-
-.sulsul-forum-card.has-pa-image::before {
-background:
-linear-gradient(90deg, var(--overlay), transparent 58%),
-linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.40)),
-var(--sulsul-forum-img);
-background-size:cover;
-background-position:center;
-filter:grayscale(1);
-opacity:.55;
+linear-gradient(90deg, var(--surface) 0%, rgba(0,0,0,0) 64%),
+linear-gradient(180deg, rgba(0,0,0,.10), var(--surface) 100%);
+opacity:.82;
+pointer-events:none;
 }
 
 .sulsul-forum-card.has-pa-image::after {
@@ -1599,17 +1608,15 @@ content:"";
 position:absolute;
 inset:0;
 z-index:-1;
-background:
-linear-gradient(90deg, var(--surface) 0%, rgba(0,0,0,0) 58%),
-linear-gradient(180deg, rgba(0,0,0,0), var(--surface) 100%);
-opacity:.52;
+background:var(--overlay);
+opacity:.14;
 pointer-events:none;
 }
 
-.sulsul-forum-card.no-pa-image::after {
+.sulsul-forum-card.no-pa-image::before {
 content:"";
 position:absolute;
-inset:12px;
+inset:10px;
 z-index:-1;
 border:1px solid var(--line);
 opacity:.65;
@@ -1618,10 +1625,6 @@ pointer-events:none;
 
 .sulsul-forum-visual {
 display:none;
-}
-
-.sulsul-forum-image-source {
-display:none !important;
 }
 
 /****************************************
@@ -1636,13 +1639,13 @@ z-index:4;
 display:flex;
 align-items:flex-start;
 justify-content:center;
-padding-top:28px;
+padding-top:22px;
 border-right:1px solid var(--line);
 color:var(--text-soft);
 }
 
 .sulsul-forum-status i {
-font-size:22px;
+font-size:18px;
 line-height:1;
 }
 
@@ -1662,14 +1665,14 @@ position:relative;
 z-index:3;
 display:flex;
 flex-direction:column;
-gap:16px;
-padding:28px 28px 22px;
+gap:12px;
+padding:22px 22px 16px;
 }
 
 .sulsul-forum-head {
 display:grid;
 grid-template-columns:minmax(0, 1fr) auto;
-gap:22px;
+gap:16px;
 align-items:start;
 }
 
@@ -1677,14 +1680,14 @@ align-items:start;
 min-width:0;
 display:flex;
 flex-direction:column;
-gap:5px;
+gap:4px;
 }
 
 .sulsul-forum-title {
 display:block;
 max-width:100%;
 font-family:var(--fuente-titulo);
-font-size:clamp(25px, 3.4vw, 42px);
+font-size:clamp(22px, 2.6vw, 32px);
 font-weight:400;
 line-height:.9;
 text-transform:uppercase;
@@ -1698,10 +1701,10 @@ color:var(--accent);
 
 .sulsul-forum-mods {
 font-family:var(--fuente-ui);
-font-size:10px;
+font-size:9px;
 font-weight:800;
-letter-spacing:.12em;
-line-height:1.3;
+letter-spacing:.1em;
+line-height:1.25;
 text-transform:uppercase;
 color:var(--text-soft);
 }
@@ -1726,8 +1729,8 @@ color:var(--accent);
 display:flex;
 align-items:flex-start;
 justify-content:flex-end;
-gap:16px;
-padding-left:18px;
+gap:12px;
+padding-left:14px;
 border-left:1px solid var(--line);
 }
 
@@ -1737,24 +1740,24 @@ flex-direction:column;
 align-items:center;
 justify-content:flex-start;
 gap:2px;
-min-width:36px;
+min-width:30px;
 font-family:var(--fuente-ui);
 text-align:center;
 }
 
 .sulsul-forum-count strong {
 font-family:var(--fuente-titulo);
-font-size:34px;
+font-size:28px;
 font-weight:400;
 line-height:.8;
 color:var(--text);
 }
 
 .sulsul-forum-count span {
-font-size:9px;
+font-size:8px;
 font-weight:800;
 line-height:1;
-letter-spacing:.12em;
+letter-spacing:.1em;
 text-transform:uppercase;
 color:var(--accent);
 }
@@ -1764,11 +1767,11 @@ color:var(--accent);
 ****************************************/
 
 .sulsul-forum-description {
-max-width:620px;
+max-width:560px;
 font-family:var(--fuente-cuerpo);
-font-size:13px;
+font-size:12px;
 font-weight:400;
-line-height:1.65;
+line-height:1.48;
 color:var(--text-soft);
 }
 
@@ -1782,7 +1785,7 @@ display:none;
 }
 
 .sulsul-forum-description p {
-margin:0 0 10px;
+margin:0 0 8px;
 }
 
 .sulsul-forum-description p:last-child {
@@ -1812,16 +1815,80 @@ border-bottom-color:var(--accent);
 }
 
 /****************************************
+  TIPOS INTERNOS DESDE DESCRIPCIÓN
+****************************************/
+
+.sulsul-forum-desc {
+display:flex;
+flex-direction:column;
+gap:7px;
+}
+
+.sulsul-forum-kicker {
+display:block;
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:800;
+letter-spacing:.16em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-forum-lead {
+display:block;
+float:left;
+margin:4px 8px 0 0;
+font-family:var(--fuente-titulo);
+font-size:28px;
+font-weight:400;
+line-height:.8;
+color:var(--accent);
+}
+
+.sulsul-forum-links {
+display:flex;
+align-items:center;
+flex-wrap:wrap;
+gap:5px 10px;
+margin-top:4px;
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:800;
+letter-spacing:.08em;
+text-transform:uppercase;
+}
+
+.sulsul-forum-links a {
+color:var(--text-soft);
+border:0;
+}
+
+.sulsul-forum-links a::after {
+content:"";
+display:inline-block;
+width:4px;
+height:4px;
+margin-left:8px;
+background:var(--accent);
+transform:rotate(45deg);
+vertical-align:middle;
+}
+
+.sulsul-forum-links a:hover {
+color:var(--accent);
+}
+
+/****************************************
   ÚLTIMO MENSAJE
 ****************************************/
 
 .sulsul-forum-last {
 display:flex;
 align-items:center;
-gap:12px;
-min-height:44px;
+gap:10px;
+min-height:38px;
 margin-top:auto;
-padding-top:16px;
+padding-top:10px;
 border-top:1px solid var(--line);
 }
 
@@ -1830,9 +1897,9 @@ display:none;
 }
 
 .sulsul-last-avatar {
-width:42px;
-height:42px;
-flex:0 0 42px;
+width:34px;
+height:34px;
+flex:0 0 34px;
 overflow:hidden;
 border:1px solid var(--line);
 background:var(--bg);
@@ -1858,27 +1925,27 @@ filter:grayscale(1);
 min-width:0;
 display:flex;
 flex-direction:column;
-gap:2px;
+gap:1px;
 font-family:var(--fuente-ui);
-font-size:10px;
+font-size:8px;
 font-weight:700;
-line-height:1.25;
+line-height:1.2;
 letter-spacing:.04em;
 text-transform:uppercase;
 color:var(--text-soft);
 }
 
 .sulsul-last-title {
-max-width:220px;
+max-width:190px;
 display:block;
 overflow:hidden;
 white-space:nowrap;
 text-overflow:ellipsis;
 font-family:var(--fuente-cuerpo);
-font-size:13px;
+font-size:12px;
 font-weight:800;
 letter-spacing:0;
-line-height:1.15;
+line-height:1.1;
 text-transform:none;
 color:var(--text);
 }
@@ -1899,16 +1966,16 @@ z-index:3;
 display:flex;
 align-items:center;
 flex-wrap:wrap;
-gap:6px 11px;
-min-height:38px;
-padding:10px 28px;
+gap:5px 10px;
+min-height:32px;
+padding:8px 22px;
 border-top:1px solid var(--line);
 background:rgba(0,0,0,.04);
 font-family:var(--fuente-ui);
-font-size:10px;
+font-size:8px;
 font-weight:800;
 letter-spacing:.08em;
-line-height:1.35;
+line-height:1.3;
 text-transform:uppercase;
 color:transparent;
 }
@@ -1924,14 +1991,14 @@ display:none;
 .sulsul-forum-subforums a {
 display:inline-flex;
 align-items:center;
-gap:7px;
+gap:6px;
 color:var(--text-soft);
 }
 
 .sulsul-forum-subforums a::before {
 content:"";
-width:5px;
-height:5px;
+width:4px;
+height:4px;
 display:inline-block;
 background:var(--accent);
 transform:rotate(45deg);
@@ -1940,6 +2007,75 @@ opacity:.9;
 
 .sulsul-forum-subforums a:hover {
 color:var(--accent);
+}
+
+/****************************************
+  VARIANTE FEATURE
+****************************************/
+
+.sulsul-forum-card.is-feature {
+grid-column:1 / -1;
+min-height:220px;
+grid-template-columns:58px minmax(0, 1fr);
+}
+
+.sulsul-forum-card.is-feature.has-pa-image {
+min-height:245px;
+}
+
+.sulsul-forum-card.is-feature .sulsul-forum-status {
+padding-top:26px;
+}
+
+.sulsul-forum-card.is-feature .sulsul-forum-status i {
+font-size:22px;
+}
+
+.sulsul-forum-card.is-feature .sulsul-forum-main {
+padding:26px 28px 18px;
+}
+
+.sulsul-forum-card.is-feature .sulsul-forum-title {
+font-size:clamp(30px, 3.8vw, 46px);
+}
+
+.sulsul-forum-card.is-feature .sulsul-forum-description {
+max-width:650px;
+font-size:13px;
+line-height:1.55;
+}
+
+/****************************************
+  VARIANTE SIMPLE
+****************************************/
+
+.sulsul-forum-card.is-simple {
+min-height:176px;
+}
+
+.sulsul-forum-card.is-simple.has-pa-image {
+min-height:205px;
+}
+
+.sulsul-forum-card.is-simple .sulsul-forum-description {
+max-height:68px;
+overflow:hidden;
+}
+
+/****************************************
+  VARIANTE IMAGE
+****************************************/
+
+.sulsul-forum-card.is-image {
+min-height:190px;
+}
+
+.sulsul-forum-card.is-image.has-pa-image {
+min-height:225px;
+}
+
+.sulsul-forum-card.is-image .sulsul-forum-description {
+display:none;
 }
 
 /****************************************
@@ -1956,31 +2092,6 @@ overflow:auto;
 padding:18px;
 border:1px solid var(--line);
 background:var(--surface);
-}
-
-/****************************************
-  AJUSTE DE TIPOS AUTOMÁTICOS
-****************************************/
-
-.sulsul-forum-card.has-pa-image .sulsul-forum-title {
-color:var(--text);
-}
-
-.sulsul-forum-card.has-pa-image .sulsul-forum-description {
-color:var(--text-soft);
-}
-
-.sulsul-forum-card.no-pa-image .sulsul-forum-main {
-padding-top:24px;
-padding-bottom:20px;
-}
-
-.sulsul-forum-card.no-pa-image .sulsul-forum-title {
-font-size:clamp(23px, 2.8vw, 34px);
-}
-
-.sulsul-forum-card.no-pa-image .sulsul-forum-description {
-max-width:520px;
 }
 
 /****************************************
@@ -2010,16 +2121,16 @@ grid-template-columns:42px minmax(0, 1fr);
 }
 
 .sulsul-forum-status {
-padding-top:24px;
+padding-top:22px;
 }
 
 .sulsul-forum-main {
-padding:24px 22px 20px;
+padding:22px 20px 18px;
 }
 
 .sulsul-forum-head {
 grid-template-columns:1fr;
-gap:14px;
+gap:12px;
 }
 
 .sulsul-forum-counts {
@@ -2029,7 +2140,15 @@ border-left:0;
 }
 
 .sulsul-forum-subforums {
-padding:10px 22px;
+padding:8px 20px;
+}
+
+.sulsul-forum-card.is-feature {
+grid-template-columns:42px minmax(0, 1fr);
+}
+
+.sulsul-forum-card.is-feature .sulsul-forum-main {
+padding:22px 20px 18px;
 }
 
 }
@@ -2037,7 +2156,7 @@ padding:10px 22px;
 @media (max-width:560px) {
 
 .sulsul-category-title {
-font-size:34px;
+font-size:32px;
 }
 
 .sulsul-forum-card {
@@ -2047,10 +2166,10 @@ grid-template-columns:1fr;
 .sulsul-forum-status {
 grid-column:1;
 grid-row:1;
-height:46px;
+height:42px;
 align-items:center;
 justify-content:flex-start;
-padding:0 20px;
+padding:0 18px;
 border-right:0;
 border-bottom:1px solid var(--line);
 }
@@ -2058,21 +2177,21 @@ border-bottom:1px solid var(--line);
 .sulsul-forum-main {
 grid-column:1;
 grid-row:2;
-padding:22px 20px;
+padding:20px 18px;
 }
 
 .sulsul-forum-subforums {
 grid-column:1;
 grid-row:3;
-padding:10px 20px;
+padding:8px 18px;
 }
 
 .sulsul-forum-title {
-font-size:30px;
+font-size:28px;
 }
 
 .sulsul-forum-count strong {
-font-size:28px;
+font-size:26px;
 }
 
 }
