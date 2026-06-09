@@ -1762,10 +1762,9 @@ font-size:36px;
 }
 
 }
-
 /****************************************
   SULSUL — INDEX BODY + TABLÓN
-  Versión integrada tipo panel / referencias
+  Panel integrado estilo foro de rol
 ****************************************/
 
 .sulsul-index {
@@ -1776,8 +1775,7 @@ gap:28px;
 }
 
 /****************************************
-  OCULTAR WIDGETS NATIVOS SUELTOS
-  Evita que "Mensajes / Mi perfil" quede flotando arriba
+  LIMPIEZA DE WIDGETS SUELTOS
 ****************************************/
 
 .sulsul-content > .module,
@@ -1789,10 +1787,8 @@ gap:28px;
 display:none!important;
 }
 
-.sulsul-latest-box .module,
-.sulsul-latest-box .panel,
-.sulsul-account-widget .module,
-.sulsul-account-widget .panel {
+.sulsul-tb-last-content .module,
+.sulsul-tb-last-content .panel {
 display:block!important;
 }
 
@@ -1994,22 +1990,20 @@ color:var(--text-soft);
 }
 
 /****************************************
-  TABLÓN GENERAL — PANEL INTEGRADO
+  TABLÓN GENERAL
 ****************************************/
 
-.sulsul-dashboard {
---dash-gap:0px;
+.sulsul-tablon {
 width:100%;
 border:1px solid var(--line);
 background:
 linear-gradient(135deg, var(--accent-soft), transparent 34%),
 var(--surface);
-padding:0;
 position:relative;
 overflow:hidden;
 }
 
-.sulsul-dashboard::before {
+.sulsul-tablon::before {
 content:"";
 position:absolute;
 inset:0;
@@ -2021,44 +2015,30 @@ opacity:.16;
 pointer-events:none;
 }
 
-.sulsul-dashboard > * {
+.sulsul-tablon > * {
 position:relative;
 z-index:2;
 }
 
 /****************************************
-  HEADER DEL TABLÓN
+  HEADER TABLÓN
 ****************************************/
 
-.sulsul-dashboard-header {
-min-height:118px;
+.sulsul-tb-header {
 display:grid;
-grid-template-columns:92px minmax(0, 1fr);
-align-items:center;
-gap:0;
+grid-template-columns:minmax(0, 1fr) 320px;
 border-bottom:1px solid var(--line);
-text-align:left;
-}
-
-.sulsul-dashboard-mark {
-width:100%;
-height:100%;
 min-height:118px;
+}
+
+.sulsul-tb-brand {
+padding:28px 34px;
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
-border-right:1px solid var(--line);
-background:var(--bg);
-color:var(--accent);
-font-size:28px;
 }
 
-.sulsul-dashboard-title {
-padding:26px 34px;
-}
-
-.sulsul-dashboard-title span {
-display:block;
+.sulsul-tb-brand span {
 font-family:var(--fuente-ui);
 font-size:10px;
 font-weight:900;
@@ -2068,7 +2048,7 @@ color:var(--accent);
 margin-bottom:8px;
 }
 
-.sulsul-dashboard-title h2 {
+.sulsul-tb-brand h2 {
 margin:0;
 font-family:var(--fuente-titulo);
 font-size:clamp(46px, 6vw, 78px);
@@ -2078,7 +2058,7 @@ text-transform:uppercase;
 color:var(--text);
 }
 
-.sulsul-dashboard-title p {
+.sulsul-tb-brand p {
 margin:10px 0 0;
 font-family:var(--fuente-ui);
 font-size:10px;
@@ -2088,83 +2068,152 @@ text-transform:uppercase;
 color:var(--text-soft);
 }
 
-/****************************************
-  GRILLA DEL TABLÓN
-****************************************/
-
-.sulsul-dashboard-grid {
-display:grid;
-grid-template-columns:1fr 1fr 1.1fr;
-grid-template-areas:
-"links links latest"
-"searches calendar latest"
-"weather calendar account";
-gap:0;
-border-top:0;
+.sulsul-tb-marquee {
+border-left:1px solid var(--line);
+overflow:hidden;
+display:flex;
+align-items:center;
+background:var(--bg);
 }
 
-.sulsul-dash-card {
+.sulsul-tb-marquee-track {
+display:flex;
+gap:40px;
+white-space:nowrap;
+animation:sulsulMarquee 26s linear infinite;
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-tb-marquee-track span {
+display:inline-flex;
+gap:5px;
+}
+
+.sulsul-tb-marquee-track b {
+color:var(--accent);
+}
+
+@keyframes sulsulMarquee {
+0% { transform:translateX(100%); }
+100% { transform:translateX(-100%); }
+}
+
+/****************************************
+  LINKS SUPERIORES
+****************************************/
+
+.sulsul-tb-links {
+display:grid;
+grid-template-columns:repeat(6, minmax(0, 1fr));
+border-bottom:1px solid var(--line);
+}
+
+.sulsul-tb-links a {
+min-height:66px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:7px;
+border-right:1px solid var(--line);
+background:var(--surface);
+color:var(--text-soft);
+text-align:center;
+}
+
+.sulsul-tb-links a:last-child {
+border-right:0;
+}
+
+.sulsul-tb-links i {
+font-size:15px;
+color:var(--accent);
+}
+
+.sulsul-tb-links span {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.13em;
+text-transform:uppercase;
+}
+
+.sulsul-tb-links a:hover {
+background:var(--accent-soft);
+color:var(--text);
+}
+
+/****************************************
+  GRILLA INTERNA
+****************************************/
+
+.sulsul-tb-grid {
+display:grid;
+grid-template-columns:1fr 1fr 1.08fr;
+grid-template-areas:
+"news calendar last"
+"searches calendar last"
+"weather census last";
+}
+
+.sulsul-tb-box {
 min-width:0;
-background:transparent;
-border:0;
 border-right:1px solid var(--line);
 border-bottom:1px solid var(--line);
 padding:20px;
-position:relative;
-overflow:hidden;
+background:transparent;
 }
 
-.sulsul-dash-card::before {
-content:none;
+.sulsul-tb-news {
+grid-area:news;
+min-height:290px;
 }
 
-.sulsul-dash-card > * {
-position:relative;
-z-index:2;
-}
-
-.sulsul-dash-latest {
-grid-area:latest;
-min-height:520px;
-border-right:0;
-}
-
-.sulsul-dash-searches {
-grid-area:searches;
-min-height:230px;
-}
-
-.sulsul-dash-links {
-grid-area:links;
-min-height:120px;
-}
-
-.sulsul-dash-calendar {
+.sulsul-tb-calendar {
 grid-area:calendar;
-min-height:390px;
+min-height:480px;
 }
 
-.sulsul-dash-weather {
-grid-area:weather;
-min-height:220px;
-border-bottom:0;
-}
-
-.sulsul-dash-account {
-grid-area:account;
-min-height:220px;
+.sulsul-tb-last {
+grid-area:last;
+min-height:590px;
 border-right:0;
+}
+
+.sulsul-tb-searches {
+grid-area:searches;
+min-height:220px;
+}
+
+.sulsul-tb-weather {
+grid-area:weather;
+min-height:230px;
 border-bottom:0;
 }
 
-.sulsul-dash-head {
+.sulsul-tb-census {
+grid-area:census;
+min-height:230px;
+border-bottom:0;
+}
+
+/****************************************
+  TÍTULOS INTERNOS
+****************************************/
+
+.sulsul-tb-title {
 display:flex;
 align-items:center;
 gap:12px;
 margin-bottom:16px;
 }
 
-.sulsul-dash-head > i {
+.sulsul-tb-title > i {
 width:32px;
 height:32px;
 display:flex;
@@ -2176,7 +2225,7 @@ color:var(--accent);
 font-size:13px;
 }
 
-.sulsul-dash-head b {
+.sulsul-tb-title b {
 display:block;
 font-family:var(--fuente-titulo);
 font-size:28px;
@@ -2185,7 +2234,7 @@ text-transform:uppercase;
 color:var(--text);
 }
 
-.sulsul-dash-head span {
+.sulsul-tb-title span {
 display:block;
 font-family:var(--fuente-ui);
 font-size:9px;
@@ -2196,16 +2245,164 @@ color:var(--accent);
 }
 
 /****************************************
-  ÚLTIMOS TEMAS — COLUMNA DERECHA
+  NOTICIAS
 ****************************************/
 
-.sulsul-latest-box {
-height:450px;
+.sulsul-tb-news-list {
+height:210px;
+overflow:auto;
+padding-right:8px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.sulsul-tb-news-item {
+display:grid;
+grid-template-columns:48px minmax(0, 1fr);
+gap:12px;
+align-items:center;
+padding-bottom:12px;
+border-bottom:1px solid var(--line);
+}
+
+.sulsul-tb-news-item strong {
+font-family:var(--fuente-titulo);
+font-size:34px;
+line-height:.82;
+color:var(--accent);
+text-align:center;
+}
+
+.sulsul-tb-news-item span {
+font-size:12px;
+line-height:1.45;
+color:var(--text-soft);
+}
+
+.sulsul-tb-news-item b {
+color:var(--text);
+}
+
+/****************************************
+  CALENDARIO
+****************************************/
+
+.sulsul-tb-cal-tabs {
+display:grid;
+grid-template-columns:repeat(4, minmax(0, 1fr));
+border:1px solid var(--line);
+margin-bottom:14px;
+}
+
+.sulsul-tb-cal-tabs button {
+min-height:64px;
+border:0;
+border-right:1px solid var(--line);
+background:var(--bg);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:3px;
+color:var(--text-soft);
+}
+
+.sulsul-tb-cal-tabs button:last-child {
+border-right:0;
+}
+
+.sulsul-tb-cal-tabs strong {
+font-family:var(--fuente-titulo);
+font-size:30px;
+line-height:.86;
+color:var(--text);
+}
+
+.sulsul-tb-cal-tabs span {
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+}
+
+.sulsul-tb-cal-tabs button.is-active {
+background:var(--accent);
+color:var(--selection-text);
+}
+
+.sulsul-tb-cal-tabs button.is-active strong,
+.sulsul-tb-cal-tabs button.is-active span {
+color:var(--selection-text);
+}
+
+.sulsul-tb-cal-panels {
+min-height:315px;
+border:1px solid var(--line);
+background:
+linear-gradient(135deg, var(--accent-soft), transparent 42%),
+var(--bg);
+padding:22px;
+}
+
+.sulsul-tb-cal-panel {
+display:none;
+}
+
+.sulsul-tb-cal-panel.is-active {
+display:block;
+}
+
+.sulsul-tb-cal-panel span {
+display:block;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:var(--accent);
+margin-bottom:9px;
+}
+
+.sulsul-tb-cal-panel h3 {
+margin:0 0 12px;
+font-family:var(--fuente-titulo);
+font-size:38px;
+line-height:.95;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-tb-cal-panel p {
+margin:0;
+font-size:12px;
+line-height:1.65;
+color:var(--text-soft);
+}
+
+.sulsul-tb-cal-panel a {
+display:inline-flex;
+margin-top:16px;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.13em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+/****************************************
+  ÚLTIMOS TEMAS
+****************************************/
+
+.sulsul-tb-last-content {
+height:510px;
 overflow:auto;
 padding-right:8px;
 }
 
-.sulsul-moved-latest {
+.sulsul-tb-moved-latest {
 width:100%!important;
 height:auto!important;
 margin:0!important;
@@ -2215,24 +2412,23 @@ border:0!important;
 box-shadow:none!important;
 }
 
-.sulsul-moved-latest .h3,
-.sulsul-moved-latest h3,
-.sulsul-moved-latest .module-title {
+.sulsul-tb-moved-latest .h3,
+.sulsul-tb-moved-latest h3,
+.sulsul-tb-moved-latest .module-title {
 display:none!important;
 }
 
-.sulsul-moved-latest ul,
-.sulsul-moved-latest ol {
+.sulsul-tb-moved-latest ul,
+.sulsul-tb-moved-latest ol {
 display:flex;
 flex-direction:column;
-gap:0;
 margin:0;
 padding:0;
 }
 
-.sulsul-moved-latest li,
-.sulsul-moved-latest .row,
-.sulsul-moved-latest .mod-recent-row {
+.sulsul-tb-moved-latest li,
+.sulsul-tb-moved-latest .row,
+.sulsul-tb-moved-latest .mod-recent-row {
 display:block;
 padding:15px 0;
 border-bottom:1px solid var(--line);
@@ -2244,11 +2440,7 @@ text-transform:uppercase;
 color:var(--text-soft);
 }
 
-.sulsul-moved-latest li::marker {
-content:"";
-}
-
-.sulsul-moved-latest a {
+.sulsul-tb-moved-latest a {
 font-family:var(--fuente-cuerpo);
 font-size:15px;
 font-weight:900;
@@ -2257,16 +2449,207 @@ text-transform:none;
 color:var(--text);
 }
 
-.sulsul-moved-latest a:hover {
+.sulsul-tb-moved-latest a:hover {
 color:var(--accent);
+}
+
+/****************************************
+  BÚSQUEDAS
+****************************************/
+
+.sulsul-tb-search-list {
+display:grid;
+grid-template-columns:repeat(3, minmax(0, 1fr));
+gap:10px;
+}
+
+.sulsul-tb-search-list a {
+min-height:130px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+gap:5px;
+padding:15px;
+border:1px solid var(--line);
+background:
+linear-gradient(135deg, rgba(0,0,0,.08), transparent 46%),
+linear-gradient(180deg, transparent, var(--accent-soft)),
+var(--bg);
+position:relative;
+overflow:hidden;
+}
+
+.sulsul-tb-search-list a::before {
+content:"";
+position:absolute;
+inset:12px;
+border:1px solid var(--line);
+opacity:.65;
+}
+
+.sulsul-tb-search-list i {
+position:absolute;
+top:18px;
+right:18px;
+color:var(--accent);
+font-size:18px;
+}
+
+.sulsul-tb-search-list span {
+position:relative;
+z-index:2;
+font-family:var(--fuente-titulo);
+font-size:26px;
+line-height:.9;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-tb-search-list b {
+position:relative;
+z-index:2;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.13em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+/****************************************
+  CLIMA
+****************************************/
+
+.sulsul-tb-weather-tabs {
+display:flex;
+border:1px solid var(--line);
+margin-bottom:12px;
+}
+
+.sulsul-tb-weather-tabs button {
+height:32px;
+background:var(--bg);
+border:0;
+border-right:1px solid var(--line);
+padding:0 12px;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.13em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-tb-weather-tabs button:last-child {
+border-right:0;
+}
+
+.sulsul-tb-weather-tabs button.is-active {
+background:var(--accent);
+color:var(--selection-text);
+}
+
+.sulsul-tb-weather-panel {
+display:none;
+min-height:118px;
+border:1px solid var(--line);
+background:
+linear-gradient(135deg, var(--accent-soft), transparent 46%),
+var(--bg);
+padding:18px;
+}
+
+.sulsul-tb-weather-panel.is-active {
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+}
+
+.sulsul-tb-weather-panel span {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.16em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-tb-weather-panel strong {
+font-family:var(--fuente-titulo);
+font-size:54px;
+line-height:.82;
+color:var(--text);
+}
+
+.sulsul-tb-weather-panel b {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.13em;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-tb-weather-panel p {
+max-width:320px;
+margin:8px 0 0;
+font-size:11px;
+line-height:1.5;
+color:var(--text-soft);
+}
+
+/****************************************
+  CENSO
+****************************************/
+
+.sulsul-tb-census-list {
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.sulsul-tb-census-item {
+display:grid;
+grid-template-columns:100px minmax(0, 1fr) 110px;
+gap:10px;
+align-items:center;
+}
+
+.sulsul-tb-census-item span,
+.sulsul-tb-census-item b {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.13em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-tb-census-item span {
+color:var(--accent);
+}
+
+.sulsul-tb-census-item i {
+height:7px;
+border:1px solid var(--line);
+background:var(--bg);
+position:relative;
+}
+
+.sulsul-tb-census-item i::before {
+content:"";
+position:absolute;
+inset:0;
+width:var(--w);
+background:var(--accent);
 }
 
 /****************************************
   PLACEHOLDER
 ****************************************/
 
-.sulsul-board-placeholder {
-min-height:130px;
+.sulsul-tb-placeholder {
+min-height:140px;
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -2281,138 +2664,13 @@ text-transform:uppercase;
 color:var(--text-soft);
 }
 
-.sulsul-board-placeholder i {
+.sulsul-tb-placeholder i {
 font-size:22px;
 color:var(--accent);
 }
 
 /****************************************
-  BÚSQUEDAS — SIN IMÁGENES ROTAS
-****************************************/
-
-.sulsul-search-grid {
-display:grid;
-grid-template-columns:repeat(3, minmax(0, 1fr));
-gap:10px;
-}
-
-.sulsul-search-item {
-min-height:132px;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-gap:5px;
-padding:15px;
-border:1px solid var(--line);
-background:
-linear-gradient(135deg, rgba(0,0,0,.16), transparent 46%),
-linear-gradient(180deg, transparent, var(--accent-soft)),
-var(--bg)!important;
-background-size:cover;
-background-position:center;
-filter:none;
-position:relative;
-overflow:hidden;
-}
-
-body.dark-mode .sulsul-search-item {
-background:
-linear-gradient(135deg, rgba(255,255,255,.04), transparent 46%),
-linear-gradient(180deg, transparent, var(--accent-soft)),
-var(--bg)!important;
-}
-
-.sulsul-search-item::before {
-content:"";
-position:absolute;
-inset:12px;
-border:1px solid var(--line);
-opacity:.65;
-background:none;
-mix-blend-mode:normal;
-}
-
-.sulsul-search-item::after {
-content:"";
-position:absolute;
-top:16px;
-right:16px;
-width:34px;
-height:34px;
-border:1px solid var(--line);
-background:var(--surface);
-}
-
-.sulsul-search-item > * {
-position:relative;
-z-index:2;
-}
-
-.sulsul-search-item span {
-font-family:var(--fuente-titulo);
-font-size:27px;
-line-height:.9;
-text-transform:uppercase;
-color:var(--text);
-}
-
-.sulsul-search-item b {
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.13em;
-text-transform:uppercase;
-color:var(--accent);
-}
-
-/****************************************
-  LINKS RÁPIDOS — BARRA SUPERIOR DEL PANEL
-****************************************/
-
-.sulsul-quicklinks {
-display:grid;
-grid-template-columns:repeat(6, minmax(0, 1fr));
-gap:0;
-border:1px solid var(--line);
-}
-
-.sulsul-quicklinks a {
-min-height:64px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:7px;
-border-right:1px solid var(--line);
-background:var(--bg);
-text-align:center;
-color:var(--text-soft);
-}
-
-.sulsul-quicklinks a:last-child {
-border-right:0;
-}
-
-.sulsul-quicklinks a i {
-font-size:15px;
-color:var(--accent);
-}
-
-.sulsul-quicklinks a span {
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.13em;
-text-transform:uppercase;
-}
-
-.sulsul-quicklinks a:hover {
-background:var(--accent-soft);
-color:var(--text);
-}
-
-/****************************************
-  TOOLTIP SIMPLE
+  TOOLTIP
 ****************************************/
 
 .sulsul-tooltip {
@@ -2441,258 +2699,6 @@ transform:translateY(0);
 }
 
 /****************************************
-  CALENDARIO MANUAL
-****************************************/
-
-.sulsul-calendar-tabs {
-display:grid;
-grid-template-columns:repeat(4, minmax(0, 1fr));
-gap:0;
-border:1px solid var(--line);
-margin-bottom:14px;
-}
-
-.sulsul-calendar-tabs button {
-min-height:58px;
-background:var(--bg);
-border:0;
-border-right:1px solid var(--line);
-color:var(--text-soft);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:2px;
-padding:8px;
-}
-
-.sulsul-calendar-tabs button:last-child {
-border-right:0;
-}
-
-.sulsul-calendar-tabs button span {
-font-family:var(--fuente-titulo);
-font-size:25px;
-line-height:1;
-color:var(--text);
-}
-
-.sulsul-calendar-tabs button b {
-font-family:var(--fuente-ui);
-font-size:8px;
-font-weight:900;
-letter-spacing:.12em;
-text-transform:uppercase;
-color:var(--text-soft);
-}
-
-.sulsul-calendar-tabs button.is-active {
-background:var(--accent);
-color:var(--selection-text);
-}
-
-.sulsul-calendar-tabs button.is-active span,
-.sulsul-calendar-tabs button.is-active b {
-color:var(--selection-text);
-}
-
-.sulsul-calendar-panels {
-min-height:235px;
-border:1px solid var(--line);
-background:var(--bg);
-padding:20px;
-}
-
-.sulsul-calendar-panel {
-display:none;
-}
-
-.sulsul-calendar-panel.is-active {
-display:block;
-}
-
-.sulsul-calendar-panel span {
-display:block;
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.16em;
-text-transform:uppercase;
-color:var(--accent);
-margin-bottom:8px;
-}
-
-.sulsul-calendar-panel h3 {
-margin:0 0 10px;
-font-family:var(--fuente-titulo);
-font-size:34px;
-line-height:.95;
-text-transform:uppercase;
-color:var(--text);
-}
-
-.sulsul-calendar-panel p {
-margin:0;
-font-size:12px;
-line-height:1.6;
-color:var(--text-soft);
-}
-
-.sulsul-calendar-panel a {
-display:inline-flex;
-margin-top:14px;
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.13em;
-text-transform:uppercase;
-color:var(--accent);
-}
-
-/****************************************
-  CLIMA PLACEHOLDER — SIN IMAGEN EXTERNA
-****************************************/
-
-.sulsul-weather-tabs {
-display:flex;
-flex-wrap:wrap;
-gap:0;
-border:1px solid var(--line);
-margin-bottom:12px;
-}
-
-.sulsul-weather-tabs button {
-height:32px;
-background:var(--bg);
-border:0;
-border-right:1px solid var(--line);
-padding:0 12px;
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.13em;
-text-transform:uppercase;
-color:var(--text-soft);
-}
-
-.sulsul-weather-tabs button:last-child {
-border-right:0;
-}
-
-.sulsul-weather-tabs button.is-active {
-background:var(--accent);
-color:var(--selection-text);
-}
-
-.sulsul-weather-panels {
-position:relative;
-min-height:140px;
-}
-
-.sulsul-weather-panel {
-display:none;
-min-height:140px;
-padding:18px;
-border:1px solid var(--line);
-background:
-linear-gradient(135deg, var(--accent-soft), transparent 46%),
-var(--bg)!important;
-color:var(--text);
-filter:none;
-}
-
-.sulsul-weather-panel.is-active {
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-}
-
-.sulsul-weather-panel span {
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.16em;
-text-transform:uppercase;
-color:var(--accent);
-}
-
-.sulsul-weather-panel strong {
-font-family:var(--fuente-titulo);
-font-size:54px;
-line-height:.82;
-color:var(--text);
-}
-
-.sulsul-weather-panel b {
-font-family:var(--fuente-ui);
-font-size:9px;
-font-weight:900;
-letter-spacing:.13em;
-text-transform:uppercase;
-color:var(--text);
-}
-
-.sulsul-weather-panel p {
-max-width:320px;
-margin:8px 0 0;
-font-size:11px;
-line-height:1.5;
-color:var(--text-soft);
-}
-
-/****************************************
-  CUENTA
-****************************************/
-
-.sulsul-account-widget {
-min-height:140px;
-}
-
-.sulsul-moved-login {
-width:100%!important;
-margin:0!important;
-padding:0!important;
-background:transparent!important;
-border:0!important;
-box-shadow:none!important;
-}
-
-.sulsul-moved-login .h3,
-.sulsul-moved-login h3,
-.sulsul-moved-login .module-title {
-display:none!important;
-}
-
-.sulsul-moved-login form {
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.sulsul-moved-login input[type="text"],
-.sulsul-moved-login input[type="password"] {
-width:100%;
-height:34px;
-background:var(--bg);
-border:1px solid var(--line);
-padding:0 10px;
-color:var(--text);
-}
-
-.sulsul-moved-login input[type="submit"] {
-height:34px;
-background:var(--accent);
-border:1px solid var(--accent);
-padding:0 14px;
-font-family:var(--fuente-ui);
-font-size:10px;
-font-weight:900;
-letter-spacing:.12em;
-text-transform:uppercase;
-color:var(--selection-text);
-}
-
-/****************************************
   BOARD INDEX
 ****************************************/
 
@@ -2701,7 +2707,7 @@ width:100%;
 }
 
 /****************************************
-  QUIÉN ESTÁ EN LÍNEA / ESTADÍSTICAS
+  ONLINE / STATS
 ****************************************/
 
 .sulsul-online,
@@ -2838,7 +2844,7 @@ color:var(--accent);
 }
 
 /****************************************
-  LEYENDA FINAL
+  LEYENDA
 ****************************************/
 
 .sulsul-forum-legend {
@@ -2873,38 +2879,45 @@ color:var(--accent);
 
 @media (max-width:1100px) {
 
-.sulsul-dashboard-grid {
+.sulsul-tb-header {
 grid-template-columns:1fr;
-grid-template-areas:
-"links"
-"latest"
-"searches"
-"calendar"
-"weather"
-"account";
 }
 
-.sulsul-dash-card {
+.sulsul-tb-marquee {
+min-height:46px;
+border-left:0;
+border-top:1px solid var(--line);
+}
+
+.sulsul-tb-grid {
+grid-template-columns:1fr;
+grid-template-areas:
+"news"
+"calendar"
+"last"
+"searches"
+"weather"
+"census";
+}
+
+.sulsul-tb-box,
+.sulsul-tb-last {
 border-right:0;
 }
 
-.sulsul-dash-latest {
-min-height:auto;
+.sulsul-tb-last-content {
+height:270px;
 }
 
-.sulsul-latest-box {
-height:260px;
-}
-
-.sulsul-search-grid {
+.sulsul-tb-search-list {
 grid-template-columns:1fr;
 }
 
-.sulsul-quicklinks {
+.sulsul-tb-links {
 grid-template-columns:repeat(3, minmax(0, 1fr));
 }
 
-.sulsul-quicklinks a:nth-child(3) {
+.sulsul-tb-links a:nth-child(3n) {
 border-right:0;
 }
 
@@ -2932,40 +2945,33 @@ justify-content:flex-start;
 grid-template-columns:1fr;
 }
 
-.sulsul-dashboard-header {
-grid-template-columns:1fr;
-}
-
-.sulsul-dashboard-mark {
-min-height:62px;
-border-right:0;
-border-bottom:1px solid var(--line);
-}
-
-.sulsul-dashboard-title {
+.sulsul-tb-brand {
 padding:24px;
 text-align:center;
 }
 
-.sulsul-quicklinks {
+.sulsul-tb-links {
 grid-template-columns:repeat(2, minmax(0, 1fr));
 }
 
-.sulsul-quicklinks a,
-.sulsul-quicklinks a:nth-child(3) {
+.sulsul-tb-links a:nth-child(3n) {
 border-right:1px solid var(--line);
 }
 
-.sulsul-quicklinks a:nth-child(2n) {
+.sulsul-tb-links a:nth-child(2n) {
 border-right:0;
 }
 
-.sulsul-calendar-tabs {
+.sulsul-tb-cal-tabs {
 grid-template-columns:repeat(2, minmax(0, 1fr));
 }
 
-.sulsul-calendar-tabs button:nth-child(2n) {
+.sulsul-tb-cal-tabs button:nth-child(2n) {
 border-right:0;
+}
+
+.sulsul-tb-census-item {
+grid-template-columns:1fr;
 }
 
 .sulsul-stats-grid {
@@ -2976,18 +2982,18 @@ grid-template-columns:1fr;
 
 @media (max-width:520px) {
 
-.sulsul-quicklinks {
+.sulsul-tb-links {
 grid-template-columns:1fr;
 }
 
-.sulsul-quicklinks a,
-.sulsul-quicklinks a:nth-child(2n),
-.sulsul-quicklinks a:nth-child(3) {
+.sulsul-tb-links a,
+.sulsul-tb-links a:nth-child(2n),
+.sulsul-tb-links a:nth-child(3n) {
 border-right:0;
 border-bottom:1px solid var(--line);
 }
 
-.sulsul-quicklinks a:last-child {
+.sulsul-tb-links a:last-child {
 border-bottom:0;
 }
 
