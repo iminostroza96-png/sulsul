@@ -37,7 +37,7 @@ font-display:swap;
 
 /*** LAYOUT GENERAL ***/
 
---nav-width:75px;
+--nav-width:118px;
 --header-height:100vh;
 --header-content-width:900px;
 
@@ -271,31 +271,102 @@ width:var(--nav-width);
 min-width:var(--nav-width);
 max-width:var(--nav-width);
 height:100vh;
-background:rgba(255,255,255,.78);
+background:rgba(255,255,255,.80);
 border-right:1px solid var(--line);
-box-shadow:18px 0 50px rgba(26,26,26,.08);
+box-shadow:none;
 backdrop-filter:blur(10px);
 -webkit-backdrop-filter:blur(10px);
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:space-between;
-padding:22px 0;
+padding:20px 0;
 }
 
 body.dark-mode .sulsul-navbar {
-background:rgba(26,26,26,.82);
-box-shadow:18px 0 50px rgba(0,0,0,.30);
+background:rgba(16,16,16,.88);
+border-right:1px solid var(--line);
+box-shadow:none;
 }
 
-.sulsul-navbar-top,
-.sulsul-navbar-bottom {
+/****************************************
+  USER CARD NAVBAR
+****************************************/
+
+.sulsul-navbar-user {
 width:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
 gap:10px;
+padding:0 10px 12px;
+border-bottom:1px solid var(--line);
 }
+
+.sulsul-navbar-avatar {
+width:54px;
+height:54px;
+border:1px solid var(--line);
+background:var(--bg);
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.sulsul-navbar-avatar img {
+width:100%!important;
+height:100%!important;
+object-fit:cover;
+display:block;
+filter:grayscale(1);
+opacity:.88;
+}
+
+.sulsul-navbar-login {
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:2px;
+text-align:center;
+line-height:1;
+}
+
+.sulsul-navbar-login span {
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-navbar-login b,
+.sulsul-navbar-login b a {
+font-family:var(--fuente-titulo);
+font-size:13px;
+font-weight:400;
+line-height:1;
+color:var(--title)!important;
+text-transform:none;
+}
+
+.sulsul-navbar-phrase {
+width:100%;
+max-height:70px;
+overflow:hidden;
+font-family:var(--fuente-cuerpo);
+font-size:10px;
+line-height:1.25;
+font-style:italic;
+text-align:center;
+color:var(--text-soft);
+}
+
+/****************************************
+  LINKS NAVBAR
+****************************************/
 
 .sulsul-navbar-links {
 width:100%;
@@ -304,32 +375,15 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-gap:8px;
+gap:4px;
 overflow:hidden;
+padding:12px 0;
 }
-
-/*** LOGO ***/
-
-.sulsul-nav-logo {
-width:42px;
-height:42px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:var(--surface);
-border:1px solid var(--line);
-font-family:var(--fuente-titulo);
-font-size:var(--size-title);
-line-height:1;
-color:var(--title);
-}
-
-/*** LINKS GENERADOS POR FOROACTIVO ***/
 
 .sulsul-navbar-links a,
 .sulsul-navbar-links a.mainmenu {
-width:34px;
-height:34px;
+width:30px;
+height:30px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -357,13 +411,23 @@ width:0!important;
 height:0!important;
 }
 
+/*** Ocultar links que no quieres en la navbar ***/
+
+.sulsul-navbar-links a[href*="/calendar"],
+.sulsul-navbar-links a[title="Calendario"],
+.sulsul-navbar-links a[href*="/images"],
+.sulsul-navbar-links a[title="Últimas imágenes"],
+.sulsul-navbar-links a[title="Ultimas imagenes"] {
+display:none!important;
+}
+
 /*** Ícono base Font Awesome ***/
 
 .sulsul-navbar-links a::before,
 .sulsul-navbar-links a.mainmenu::before {
 font-family:"Font Awesome 6 Free";
 font-weight:900;
-font-size:14px;
+font-size:13px;
 line-height:1;
 color:currentColor;
 display:flex;
@@ -390,21 +454,6 @@ color:var(--accent)!important;
 .sulsul-navbar-links a[title="Índice"]::before,
 .sulsul-navbar-links a[title="Indice"]::before {
 content:"\f015";
-}
-
-/* Calendario */
-.sulsul-navbar-links a[href*="/calendar"]::before,
-.sulsul-navbar-links a[title="Calendario"]::before {
-content:"\f133";
-font-weight:400;
-}
-
-/* Últimas imágenes / galería */
-.sulsul-navbar-links a[href*="/images"]::before,
-.sulsul-navbar-links a[title="Últimas imágenes"]::before,
-.sulsul-navbar-links a[title="Ultimas imagenes"]::before {
-content:"\f03e";
-font-weight:400;
 }
 
 /* Toda la actividad / Discover */
@@ -476,14 +525,24 @@ content:"\f2f5";
   BOTONES INFERIORES
 ****************************************/
 
+.sulsul-navbar-bottom {
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:6px;
+padding-top:12px;
+border-top:1px solid var(--line);
+}
+
 .sulsul-theme-toggle,
 .sulsul-nav-up {
-width:34px;
-height:34px;
+width:30px;
+height:30px;
 display:flex;
 align-items:center;
 justify-content:center;
-background:var(--surface);
+background:transparent;
 border:1px solid var(--line);
 color:var(--text-soft);
 font-family:var(--fuente-ui);
@@ -495,7 +554,7 @@ padding:0;
 .sulsul-theme-toggle::before {
 font-family:"Font Awesome 6 Free";
 font-weight:400;
-font-size:13px;
+font-size:12px;
 content:"\f186";
 }
 
@@ -507,7 +566,7 @@ font-weight:900;
 .sulsul-nav-up::before {
 font-family:"Font Awesome 6 Free";
 font-weight:900;
-font-size:13px;
+font-size:12px;
 content:"\f062";
 }
 
@@ -517,6 +576,7 @@ background:var(--accent);
 border-color:var(--accent);
 color:var(--selection-text);
 }
+
 /****************************************
   ZONA DERECHA DEL FORO
 ****************************************/
@@ -708,6 +768,28 @@ border-top:1px solid var(--line);
 margin:24px 0;
 }
 
+/****************************************
+  OCULTAR TOOLBAR FOROACTIVO
+****************************************/
+
+#fa_toolbar,
+#fa_toolbar_hidden,
+#fa_toolbar_container,
+body #fa_toolbar,
+body #fa_toolbar_hidden {
+display:none!important;
+visibility:hidden!important;
+opacity:0!important;
+pointer-events:none!important;
+height:0!important;
+min-height:0!important;
+max-height:0!important;
+overflow:hidden!important;
+}
+
+body#phpbb {
+margin-top:0!important;
+}
 /****************************************
   LIMPIEZA VISUAL PHPBB3
 ****************************************/
