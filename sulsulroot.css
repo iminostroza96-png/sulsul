@@ -959,35 +959,32 @@ color:var(--accent);
 
 /****************************************
   ACCIONES SUPERIORES / INFERIORES
+  Versión compacta con íconos Font Awesome
 ****************************************/
 
 .sulsul-index-actions {
 width:100%;
 display:flex;
 align-items:center;
-justify-content:flex-start;
+justify-content:center;
 flex-wrap:wrap;
-gap:14px 22px;
+gap:8px;
 margin:0;
 padding:0;
 list-style:none;
 font-family:var(--fuente-ui);
-font-size:var(--size-small);
-font-weight:700;
-line-height:1.4;
-letter-spacing:.12em;
-text-transform:uppercase;
+line-height:1;
 color:var(--text-soft);
 }
 
 .sulsul-index-actions.top {
-padding-bottom:24px;
+padding-bottom:22px;
 margin-bottom:34px;
 border-bottom:1px solid var(--line);
 }
 
 .sulsul-index-actions.bottom {
-padding-top:24px;
+padding-top:22px;
 margin-top:34px;
 border-top:1px solid var(--line);
 }
@@ -995,28 +992,158 @@ border-top:1px solid var(--line);
 .sulsul-index-actions li {
 display:flex;
 align-items:center;
+justify-content:center;
 list-style:none;
+margin:0;
+padding:0;
 }
 
 .sulsul-index-actions li.sulsul-action-right {
-margin-left:auto;
+margin-left:0;
 }
 
 .sulsul-index-actions a {
-display:inline-flex;
+width:34px;
+height:34px;
+display:flex;
 align-items:center;
-gap:8px;
+justify-content:center;
+position:relative;
+background:var(--surface);
+border:1px solid var(--line);
 color:var(--text-soft);
+font-size:0;
+line-height:1;
+text-decoration:none;
+overflow:hidden;
 }
 
 .sulsul-index-actions a:hover {
+background:var(--accent-soft);
+border-color:var(--accent);
 color:var(--accent);
 }
 
-.sulsul-index-actions i {
-font-size:12px;
+.sulsul-index-actions a i {
+display:none;
+}
+
+.sulsul-index-actions a::before {
+font-family:"Font Awesome 6 Free";
+font-weight:900;
+font-size:13px;
 line-height:1;
-color:var(--accent);
+color:currentColor;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/****************************************
+  ICONOS — acciones de mensajes
+****************************************/
+
+/* Ver mensajes desde la última visita */
+.sulsul-index-actions a[href*="search_id=newposts"]::before {
+content:"\f017";
+}
+
+/* Ver tus mensajes */
+.sulsul-index-actions a[href*="search_id=egosearch"]::before {
+content:"\f007";
+font-weight:400;
+}
+
+/* Ver mensajes sin respuesta */
+.sulsul-index-actions a[href*="search_id=unanswered"]::before {
+content:"\f059";
+font-weight:400;
+}
+
+/* Marcar todos los foros como leídos */
+.sulsul-index-actions a[href*="mark=forums"]::before,
+.sulsul-index-actions a[href*="mark=all"]::before {
+content:"\f058";
+font-weight:400;
+}
+
+/****************************************
+  ICONOS — estadísticas / actividad
+****************************************/
+
+/* Temas activos del día */
+.sulsul-index-actions a[href*="search_id=activetopics"]::before,
+.sulsul-index-actions a[href*="search_id=active_topics"]::before {
+content:"\f201";
+}
+
+/* Top 20 posteadores hoy */
+.sulsul-index-actions a[href*="mode=today_posters"]::before,
+.sulsul-index-actions a[href*="today_posters"]::before {
+content:"\f0c0";
+}
+
+/* Top 20 posteadores del foro */
+.sulsul-index-actions a[href*="mode=overall_posters"]::before,
+.sulsul-index-actions a[href*="overall_posters"]::before {
+content:"\f091";
+}
+
+/* Suprimir cookies del foro */
+.sulsul-index-actions a[href*="delete_cookies"]::before,
+.sulsul-index-actions a[href*="mode=delete_cookies"]::before {
+content:"\f1b0";
+}
+
+/****************************************
+  FALLBACK
+  Si Foroactivo genera algún link raro sin match,
+  queda con icono genérico y no rompe la fila.
+****************************************/
+
+.sulsul-index-actions a:not([href])::before,
+.sulsul-index-actions a::before {
+content:"\f111";
+}
+
+.sulsul-index-actions a[href*="search_id=newposts"]::before {
+content:"\f017";
+}
+
+.sulsul-index-actions a[href*="search_id=egosearch"]::before {
+content:"\f007";
+font-weight:400;
+}
+
+.sulsul-index-actions a[href*="search_id=unanswered"]::before {
+content:"\f059";
+font-weight:400;
+}
+
+.sulsul-index-actions a[href*="mark=forums"]::before,
+.sulsul-index-actions a[href*="mark=all"]::before {
+content:"\f058";
+font-weight:400;
+}
+
+.sulsul-index-actions a[href*="search_id=activetopics"]::before,
+.sulsul-index-actions a[href*="search_id=active_topics"]::before {
+content:"\f201";
+}
+
+.sulsul-index-actions a[href*="mode=today_posters"]::before,
+.sulsul-index-actions a[href*="today_posters"]::before {
+content:"\f0c0";
+}
+
+.sulsul-index-actions a[href*="mode=overall_posters"]::before,
+.sulsul-index-actions a[href*="overall_posters"]::before {
+content:"\f091";
+}
+
+.sulsul-index-actions a[href*="delete_cookies"]::before,
+.sulsul-index-actions a[href*="mode=delete_cookies"]::before {
+content:"\f1b0";
 }
 
 /****************************************
