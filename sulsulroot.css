@@ -611,7 +611,6 @@ var(--header-img);
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
-border-bottom:1px solid var(--line);
 display:flex;
 align-items:center;
 justify-content:center;
