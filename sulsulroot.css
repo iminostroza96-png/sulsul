@@ -7002,3 +7002,928 @@ flex-wrap:wrap;
 grid-template-columns:1fr;
 }
 }
+/****************************************
+  SULSUL — PROFILE VIEW CARD
+****************************************/
+
+.sulsul-profile-view {
+width:100%;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+box-sizing:border-box;
+}
+
+.sulsul-profile-cardview {
+--pf-w:860px;
+--pf-h:1080px;
+--pf-line:var(--line);
+--pf-top-h:128px;
+--pf-left-w:286px;
+--pf-avatar-h:430px;
+--pf-pastel-1:rgba(129,155,54,.14);
+--pf-pastel-2:rgba(176,140,194,.14);
+--pf-pastel-3:rgba(216,174,88,.14);
+--pf-pastel-4:rgba(106,159,184,.13);
+--pf-soft-border:rgba(129,155,54,.32);
+width:var(--pf-w);
+height:var(--pf-h);
+display:grid;
+grid-template-rows:var(--pf-top-h) minmax(0,1fr);
+border:1px solid var(--pf-line);
+background:var(--surface);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+/****************************************
+  TOP
+****************************************/
+
+.sulsul-profile-top {
+height:var(--pf-top-h);
+display:grid;
+grid-template-columns:128px minmax(230px,1fr) 454px;
+border-bottom:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-icon {
+width:128px;
+height:128px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:14px;
+border-right:1px solid var(--pf-line);
+background:var(--bg);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-icon:empty::before {
+content:"?";
+width:96px;
+height:96px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid var(--pf-line);
+background:var(--surface);
+font-family:var(--fuente-ui);
+font-size:18px;
+font-weight:900;
+color:var(--text-soft);
+box-sizing:border-box;
+}
+
+.sulsul-profile-icon a,
+.sulsul-profile-icon span {
+width:96px!important;
+height:96px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+padding:0!important;
+margin:0!important;
+border:0!important;
+background:transparent!important;
+overflow:hidden!important;
+box-sizing:border-box!important;
+font-size:0!important;
+line-height:0!important;
+}
+
+.sulsul-profile-icon img {
+width:96px!important;
+height:96px!important;
+display:block!important;
+object-fit:cover!important;
+object-position:center!important;
+filter:none!important;
+border:0!important;
+background:transparent!important;
+box-sizing:border-box!important;
+}
+
+.sulsul-profile-namebox {
+min-width:0;
+height:128px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:7px;
+padding:18px 26px;
+border-right:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-rank {
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-profile-rank img {
+display:none!important;
+}
+
+.sulsul-profile-namebox h1 {
+margin:0;
+padding:0;
+font-family:var(--fuente-titulo);
+font-size:54px;
+font-weight:900;
+line-height:.78;
+letter-spacing:.01em;
+text-transform:uppercase;
+color:var(--text);
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.sulsul-profile-namebox a {
+width:fit-content;
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.14em;
+text-transform:uppercase;
+color:var(--text-soft);
+text-decoration:none;
+}
+
+.sulsul-profile-namebox a:hover {
+color:var(--accent);
+}
+
+.sulsul-profile-topdata {
+height:128px;
+display:grid;
+grid-template-columns:124px 110px 110px 110px;
+overflow:hidden;
+}
+
+.sulsul-profile-topdata div {
+min-width:0;
+height:128px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:6px;
+padding:14px 16px;
+border-right:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-topdata div:last-child {
+border-right:0;
+}
+
+.sulsul-profile-topdata span,
+.sulsul-profile-chip span,
+.sulsul-profile-boxtitle,
+.sulsul-profile-title span,
+.sulsul-career-line span {
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.16em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-profile-topdata strong {
+min-width:0;
+display:block;
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.05em;
+line-height:1.22;
+text-transform:uppercase;
+color:var(--text-soft);
+white-space:normal;
+overflow:hidden;
+overflow-wrap:anywhere;
+}
+
+/****************************************
+  BODY
+****************************************/
+
+.sulsul-profile-body {
+height:calc(var(--pf-h) - var(--pf-top-h));
+display:grid;
+grid-template-columns:var(--pf-left-w) minmax(0,1fr);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-left {
+width:var(--pf-left-w);
+height:100%;
+display:grid;
+grid-template-rows:var(--pf-avatar-h) 96px minmax(0,1fr);
+border-right:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-main {
+min-width:0;
+height:100%;
+display:grid;
+grid-template-rows:286px 264px minmax(0,1fr);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+/****************************************
+  LEFT
+****************************************/
+
+.sulsul-profile-avatar {
+width:var(--pf-left-w);
+height:var(--pf-avatar-h);
+border-bottom:1px solid var(--pf-line);
+background:var(--bg);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-avatar a,
+.sulsul-profile-avatar span {
+width:100%!important;
+height:100%!important;
+display:block!important;
+padding:0!important;
+margin:0!important;
+border:0!important;
+background:transparent!important;
+box-sizing:border-box!important;
+}
+
+.sulsul-profile-avatar img {
+width:100%!important;
+height:100%!important;
+display:block!important;
+object-fit:cover!important;
+object-position:center!important;
+filter:grayscale(1);
+border:0!important;
+background:transparent!important;
+box-sizing:border-box!important;
+}
+
+.sulsul-profile-leftbar {
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 48px;
+border-bottom:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-chip {
+min-width:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:6px;
+padding:12px 14px;
+border-right:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-chip:nth-child(2) {
+border-right:0;
+}
+
+.sulsul-profile-chip strong {
+font-family:var(--fuente-ui);
+font-size:12px;
+font-weight:900;
+letter-spacing:.05em;
+line-height:1.25;
+text-transform:uppercase;
+color:var(--text-soft);
+overflow-wrap:anywhere;
+}
+
+.sulsul-profile-actions {
+grid-column:1 / -1;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:8px 12px;
+border-top:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-actions a {
+height:30px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:0 12px;
+border:1px solid var(--pf-line);
+background:var(--bg);
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+text-decoration:none;
+box-sizing:border-box;
+}
+
+.sulsul-profile-actions a:hover {
+border-color:var(--accent);
+background:var(--accent-soft);
+color:var(--accent);
+}
+
+/****************************************
+  SECTIONS
+****************************************/
+
+.sulsul-profile-section {
+min-width:0;
+display:flex;
+flex-direction:column;
+padding:20px;
+border-bottom:1px solid var(--pf-line);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-section:last-child {
+border-bottom:0;
+}
+
+.sulsul-profile-title {
+height:28px;
+display:flex;
+align-items:center;
+gap:9px;
+padding-bottom:10px;
+margin-bottom:14px;
+border-bottom:1px solid var(--pf-line);
+box-sizing:border-box;
+}
+
+.sulsul-profile-title i {
+font-size:11px;
+color:var(--accent);
+}
+
+/****************************************
+  PROGRESO
+****************************************/
+
+.sulsul-profile-progressgrid {
+height:204px;
+display:grid;
+grid-template-columns:230px minmax(0,1fr);
+gap:14px;
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-aspiration,
+.sulsul-profile-career {
+min-width:0;
+height:100%;
+position:relative;
+padding:14px;
+border:1px solid var(--pf-soft-border);
+background:
+linear-gradient(135deg,var(--pf-pastel-1),transparent 58%),
+var(--bg);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-career {
+background:
+linear-gradient(135deg,var(--pf-pastel-4),transparent 58%),
+var(--bg);
+}
+
+.sulsul-profile-aspiration::before,
+.sulsul-profile-career::before,
+.sulsul-profile-scrollbox::before {
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:5px;
+background:linear-gradient(90deg,var(--accent),transparent);
+opacity:.65;
+pointer-events:none;
+}
+
+.sulsul-profile-aspiration {
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+}
+
+.sulsul-profile-boxtitle {
+height:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:8px;
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:var(--accent);
+text-align:center;
+}
+
+.sulsul-profile-bigicon {
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/****************************************
+  ICONOS ÚNICOS: ASPIRACIÓN / CARRERA
+****************************************/
+
+.sulsul-profile-bigicon.sulsul-profile-iconlist {
+width:100%;
+height:82px;
+min-height:82px;
+max-height:82px;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+align-content:center!important;
+justify-items:center!important;
+grid-template-columns:none!important;
+grid-auto-rows:auto!important;
+gap:0!important;
+overflow:hidden!important;
+padding:0!important;
+box-sizing:border-box!important;
+}
+
+.sulsul-profile-career .sulsul-profile-bigicon.sulsul-profile-iconlist {
+height:76px;
+min-height:76px;
+max-height:76px;
+}
+
+.sulsul-profile-aspiration .sulsul-profile-bigicon {
+margin-bottom:3px;
+}
+
+.sulsul-profile-aspiration-level {
+min-height:38px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+gap:3px;
+text-align:center;
+}
+
+.sulsul-profile-level-tag {
+height:18px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:0 8px;
+border:1px solid var(--pf-soft-border);
+background:var(--surface);
+font-family:var(--fuente-ui);
+font-size:7px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--accent);
+box-sizing:border-box;
+}
+
+.sulsul-profile-level-name {
+max-width:180px;
+font-family:var(--fuente-ui);
+font-size:11px;
+font-weight:900;
+letter-spacing:.05em;
+line-height:1.2;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+/****************************************
+  CARRERA
+****************************************/
+
+.sulsul-profile-career {
+display:flex;
+flex-direction:column;
+}
+
+.sulsul-profile-careerline {
+min-height:0;
+display:grid;
+grid-template-columns:82px minmax(0,1fr);
+gap:14px;
+align-items:start;
+overflow:hidden;
+}
+
+.sulsul-profile-careertext {
+min-width:0;
+height:142px;
+display:flex;
+flex-direction:column;
+gap:5px;
+overflow:auto;
+padding-right:4px;
+box-sizing:border-box;
+}
+
+.sulsul-career-line {
+display:grid;
+grid-template-columns:62px minmax(0,1fr);
+align-items:start;
+gap:8px;
+min-height:20px;
+padding:0 0 5px;
+border:0;
+border-bottom:1px solid var(--line);
+background:transparent;
+box-sizing:border-box;
+}
+
+.sulsul-career-line:last-child {
+border-bottom:0;
+}
+
+.sulsul-career-line span {
+font-family:var(--fuente-ui);
+font-size:7px;
+font-weight:900;
+letter-spacing:.14em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-career-line strong {
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.03em;
+line-height:1.22;
+text-transform:uppercase;
+color:var(--text-soft);
+overflow-wrap:anywhere;
+}
+
+/****************************************
+  PERSONALIDAD / INVENTARIO
+****************************************/
+
+.sulsul-profile-twocols {
+min-height:0;
+height:186px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-inventory .sulsul-profile-twocols {
+height:194px;
+}
+
+.sulsul-profile-scrollbox {
+min-width:0;
+height:100%;
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:stretch;
+padding:14px;
+border:1px solid var(--pf-soft-border);
+background:
+linear-gradient(135deg,var(--pf-pastel-2),transparent 60%),
+var(--bg);
+box-sizing:border-box;
+overflow:hidden;
+}
+
+.sulsul-profile-personality .sulsul-profile-scrollbox:nth-child(2) {
+background:
+linear-gradient(135deg,var(--pf-pastel-4),transparent 60%),
+var(--bg);
+}
+
+.sulsul-profile-inventory .sulsul-profile-scrollbox:nth-child(1) {
+background:
+linear-gradient(135deg,var(--pf-pastel-3),transparent 60%),
+var(--bg);
+}
+
+.sulsul-profile-inventory .sulsul-profile-scrollbox:nth-child(2) {
+background:
+linear-gradient(135deg,var(--pf-pastel-1),transparent 60%),
+var(--bg);
+}
+
+.sulsul-profile-scrollbox .sulsul-profile-boxtitle {
+flex:0 0 18px;
+margin-bottom:10px;
+}
+
+/****************************************
+  ICON LIST BASE
+****************************************/
+
+.sulsul-profile-iconlist {
+width:100%;
+min-height:0;
+height:100%;
+display:grid;
+grid-template-columns:repeat(auto-fill,50px);
+grid-auto-rows:50px;
+align-content:start;
+justify-content:center;
+gap:10px;
+overflow-y:auto;
+overflow-x:hidden;
+padding:0 6px 6px;
+box-sizing:border-box;
+}
+
+.sulsul-profile-personality .sulsul-profile-iconlist,
+.sulsul-profile-inventory .sulsul-profile-iconlist {
+height:132px;
+max-height:132px;
+overflow-y:auto;
+overflow-x:hidden;
+}
+
+.sulsul-profile-iconlist a,
+.sulsul-profile-iconlist .sulsul-tooltip-icon,
+.sulsul-profile-iconlist > img,
+.sulsul-profile-iconlist > span.sulsul-loose-icon {
+width:50px!important;
+height:50px!important;
+min-width:50px!important;
+max-width:50px!important;
+min-height:50px!important;
+max-height:50px!important;
+display:inline-flex!important;
+align-items:center!important;
+justify-content:center!important;
+padding:6px!important;
+border:1px solid var(--line);
+background:var(--surface);
+box-sizing:border-box!important;
+overflow:hidden!important;
+text-decoration:none!important;
+}
+
+.sulsul-profile-bigicon a,
+.sulsul-profile-bigicon .sulsul-tooltip-icon,
+.sulsul-profile-bigicon > img,
+.sulsul-profile-bigicon > span.sulsul-loose-icon {
+width:76px!important;
+height:76px!important;
+min-width:76px!important;
+max-width:76px!important;
+min-height:76px!important;
+max-height:76px!important;
+padding:8px!important;
+margin:0 auto!important;
+align-self:center!important;
+justify-self:center!important;
+}
+
+.sulsul-profile-medals {
+grid-template-columns:repeat(auto-fill,46px);
+grid-auto-rows:46px;
+}
+
+.sulsul-profile-medals a,
+.sulsul-profile-medals .sulsul-tooltip-icon,
+.sulsul-profile-medals > img,
+.sulsul-profile-medals > span.sulsul-loose-icon {
+width:46px!important;
+height:46px!important;
+min-width:46px!important;
+max-width:46px!important;
+min-height:46px!important;
+max-height:46px!important;
+padding:5px!important;
+}
+
+.sulsul-profile-objects {
+grid-template-columns:repeat(auto-fill,50px);
+grid-auto-rows:50px;
+}
+
+.sulsul-profile-objects a,
+.sulsul-profile-objects .sulsul-tooltip-icon,
+.sulsul-profile-objects > img,
+.sulsul-profile-objects > span.sulsul-loose-icon {
+width:50px!important;
+height:50px!important;
+min-width:50px!important;
+max-width:50px!important;
+min-height:50px!important;
+max-height:50px!important;
+padding:6px!important;
+}
+
+.sulsul-profile-iconlist img,
+.sulsul-profile-iconlist a img,
+.sulsul-profile-iconlist .sulsul-tooltip-icon img,
+.sulsul-profile-iconlist .sulsul-loose-icon img {
+width:100%!important;
+height:100%!important;
+max-width:100%!important;
+max-height:100%!important;
+display:block!important;
+object-fit:contain!important;
+filter:none!important;
+border:0!important;
+background:transparent!important;
+padding:0!important;
+margin:0!important;
+box-sizing:border-box!important;
+}
+
+.sulsul-profile-iconlist a:hover,
+.sulsul-profile-iconlist .sulsul-tooltip-icon:hover,
+.sulsul-profile-iconlist .sulsul-loose-icon:hover {
+border-color:var(--accent);
+background:var(--accent-soft);
+}
+
+/****************************************
+  INVENTARIO
+****************************************/
+
+.sulsul-profile-objects,
+.sulsul-profile-medals {
+height:132px;
+}
+
+/****************************************
+  SCROLL
+****************************************/
+
+.sulsul-profile-iconlist::-webkit-scrollbar,
+.sulsul-profile-careertext::-webkit-scrollbar {
+width:5px;
+}
+
+.sulsul-profile-iconlist::-webkit-scrollbar-track,
+.sulsul-profile-careertext::-webkit-scrollbar-track {
+background:transparent;
+}
+
+.sulsul-profile-iconlist::-webkit-scrollbar-thumb,
+.sulsul-profile-careertext::-webkit-scrollbar-thumb {
+background:var(--line);
+}
+
+.sulsul-profile-iconlist::-webkit-scrollbar-thumb:hover,
+.sulsul-profile-careertext::-webkit-scrollbar-thumb:hover {
+background:var(--accent);
+}
+
+/****************************************
+  HIDDEN SOURCES
+****************************************/
+
+.sulsul-profile-source,
+.sulsul-profile-contact-source {
+display:none!important;
+}
+
+/****************************************
+  NATIVE CLEANUP
+****************************************/
+
+.sulsul-profile-view .panel,
+.sulsul-profile-view .bg1,
+.sulsul-profile-view .bg2,
+.sulsul-profile-view .inner,
+.sulsul-profile-view .column1,
+.sulsul-profile-view .column2,
+.sulsul-profile-view .details,
+.sulsul-profile-view dl,
+.sulsul-profile-view dt,
+.sulsul-profile-view dd,
+.sulsul-profile-view .corners-top,
+.sulsul-profile-view .corners-bottom,
+.sulsul-profile-view .clear {
+display:none!important;
+}
+
+/****************************************
+  RESPONSIVE
+****************************************/
+
+@media (max-width:920px) {
+.sulsul-profile-cardview {
+width:100%;
+height:auto;
+min-height:1080px;
+}
+
+.sulsul-profile-top {
+height:auto;
+grid-template-columns:128px minmax(0,1fr);
+}
+
+.sulsul-profile-topdata {
+grid-column:1 / -1;
+grid-template-columns:repeat(2,minmax(0,1fr));
+border-top:1px solid var(--pf-line);
+}
+
+.sulsul-profile-body {
+height:auto;
+grid-template-columns:1fr;
+}
+
+.sulsul-profile-left {
+width:100%;
+grid-template-columns:286px minmax(0,1fr);
+grid-template-rows:auto;
+border-right:0;
+border-bottom:1px solid var(--pf-line);
+}
+
+.sulsul-profile-avatar {
+width:100%;
+}
+
+.sulsul-profile-leftbar {
+border-bottom:0;
+}
+
+.sulsul-profile-main {
+height:auto;
+display:flex;
+flex-direction:column;
+}
+}
+
+@media (max-width:700px) {
+.sulsul-profile-top,
+.sulsul-profile-left,
+.sulsul-profile-progressgrid,
+.sulsul-profile-twocols,
+.sulsul-profile-careerline {
+grid-template-columns:1fr;
+}
+
+.sulsul-profile-icon {
+width:100%;
+border-right:0;
+border-bottom:1px solid var(--pf-line);
+}
+
+.sulsul-profile-namebox {
+border-right:0;
+border-bottom:1px solid var(--pf-line);
+}
+
+.sulsul-profile-topdata {
+grid-template-columns:1fr;
+}
+
+.sulsul-profile-avatar {
+width:100%;
+height:420px;
+}
+
+.sulsul-profile-section {
+padding:18px;
+}
+}
