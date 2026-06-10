@@ -4350,3 +4350,1180 @@ width:100%;
 min-width:0;
 }
 }
+/****************************************
+  SULSUL — VIEWTOPIC BODY
+****************************************/
+
+.sulsul-viewtopic {
+width:100%;
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+/****************************************
+  CABECERA TEMA
+****************************************/
+
+.sulsul-vt-header {
+width:100%;
+min-height:150px;
+display:grid;
+grid-template-columns:minmax(0,1fr) auto;
+grid-template-rows:auto auto auto;
+gap:8px 18px;
+align-items:center;
+padding:32px;
+border:1px solid var(--line);
+background:var(--surface);
+position:relative;
+overflow:hidden;
+}
+
+.sulsul-vt-header::before {
+content:"";
+position:absolute;
+top:50%;
+left:50%;
+width:90px;
+height:90px;
+background:var(--accent);
+opacity:.12;
+transform:translate(-50%,-50%) rotate(45deg);
+pointer-events:none;
+}
+
+.sulsul-vt-header::after {
+content:"";
+position:absolute;
+inset:10px;
+border:1px solid var(--line);
+pointer-events:none;
+}
+
+.sulsul-vt-header > * {
+position:relative;
+z-index:2;
+}
+
+.sulsul-vt-kicker {
+grid-column:1;
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.34em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-vt-header h1 {
+grid-column:1;
+margin:0;
+padding:0;
+font-family:var(--fuente-titulo);
+font-size:clamp(38px,5vw,64px);
+font-weight:400;
+line-height:.86;
+letter-spacing:.02em;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-vt-header h1 a {
+color:var(--text);
+}
+
+.sulsul-vt-header h1 a:hover {
+color:var(--accent);
+}
+
+/* Oculta la campana push extra si sigue en el HTML */
+#push-bell {
+display:none!important;
+}
+
+/* Oculta comparte / más si el bloque sigue en el HTML */
+.sulsul-vt-share,
+.sulsul-vt-share #addthis-toolbar,
+#addthis-toolbar,
+.addthis-toolbar-btn,
+.btn-floating-left {
+display:none!important;
+}
+
+.sulsul-vt-path {
+grid-column:1;
+display:flex;
+align-items:center;
+flex-wrap:wrap;
+gap:8px;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-vt-path a {
+color:var(--accent);
+}
+
+.sulsul-vt-page {
+grid-column:2;
+grid-row:1 / span 3;
+align-self:end;
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+gap:8px;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+/****************************************
+  TOOLBAR
+****************************************/
+
+.sulsul-vt-toolbar {
+width:100%;
+display:grid;
+grid-template-columns:auto minmax(0,1fr) auto;
+align-items:center;
+gap:12px;
+padding:14px;
+border:1px solid var(--line);
+background:var(--surface);
+}
+
+.sulsul-vt-buttons {
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.sulsul-vt-button {
+height:34px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+padding:0 12px;
+background:var(--accent);
+border:1px solid var(--accent);
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--selection-text)!important;
+white-space:nowrap;
+}
+
+.sulsul-vt-button:hover {
+background:var(--bg);
+color:var(--accent)!important;
+}
+
+.sulsul-vt-button i {
+font-size:10px;
+color:inherit;
+}
+
+.sulsul-vt-pagination {
+display:flex;
+align-items:center;
+justify-content:center;
+gap:6px;
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-vt-navlinks {
+display:flex;
+align-items:center;
+justify-content:flex-end;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.sulsul-vt-navlinks a,
+.sulsul-vt-watch a {
+height:30px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:0 10px;
+background:var(--bg);
+border:1px solid var(--line);
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-vt-navlinks a:hover,
+.sulsul-vt-watch a:hover {
+background:var(--accent-soft);
+border-color:var(--accent);
+color:var(--accent);
+}
+
+/****************************************
+  POSTS WRAPPER
+****************************************/
+
+.sulsul-vt-posts {
+width:100%;
+display:flex;
+flex-direction:column;
+gap:26px;
+}
+
+.sulsul-post {
+width:100%;
+border:1px solid var(--line);
+background:var(--surface);
+position:relative;
+overflow:hidden;
+}
+
+/* Sin gradiente en el fondo del post */
+.sulsul-post::before {
+display:none;
+}
+
+.sulsul-post::after {
+content:"";
+position:absolute;
+inset:10px;
+border:1px solid var(--line);
+pointer-events:none;
+opacity:.75;
+}
+
+.sulsul-post > * {
+position:relative;
+z-index:2;
+}
+
+.sulsul-post-anchor {
+position:absolute;
+top:-80px;
+}
+
+/****************************************
+  POST HEADER
+****************************************/
+
+.sulsul-post-head {
+min-height:42px;
+display:grid;
+grid-template-columns:minmax(0,1fr) auto;
+align-items:center;
+border-bottom:1px solid var(--line);
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-post-head-left,
+.sulsul-post-head-right {
+height:100%;
+display:flex;
+align-items:center;
+gap:8px;
+padding:0 14px;
+}
+
+.sulsul-post-head-left i {
+color:var(--accent);
+font-size:11px;
+}
+
+.sulsul-post-head-right {
+border-left:1px solid var(--line);
+color:var(--accent);
+}
+
+/****************************************
+  POST LAYOUT
+****************************************/
+
+.sulsul-post-layout {
+display:grid;
+grid-template-columns:minmax(0,1fr) 250px;
+min-height:330px;
+}
+
+.sulsul-post-main {
+min-width:0;
+padding:32px;
+border-right:1px solid var(--line);
+}
+
+.sulsul-post-topline {
+display:grid;
+grid-template-columns:minmax(0,1fr) auto;
+gap:18px;
+align-items:start;
+padding-bottom:14px;
+margin-bottom:22px;
+border-bottom:1px solid var(--line);
+}
+
+.sulsul-post-topline h2 {
+margin:0;
+padding:0;
+font-family:var(--fuente-titulo);
+font-size:clamp(28px,3vw,40px);
+font-weight:400;
+line-height:.9;
+letter-spacing:.01em;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-post-topline h2 a {
+color:var(--text);
+}
+
+.sulsul-post-topline h2 a:hover {
+color:var(--accent);
+}
+
+.sulsul-post-author-line {
+display:flex;
+align-items:center;
+gap:6px;
+margin-bottom:22px;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-post-author-line strong,
+.sulsul-post-author-line a {
+color:var(--accent)!important;
+font-weight:900;
+}
+
+/****************************************
+  BOTONES POST — FONT AWESOME
+****************************************/
+
+.sulsul-post-icons {
+display:flex;
+align-items:center;
+justify-content:flex-end;
+flex-wrap:wrap;
+gap:6px;
+margin:0;
+padding:0;
+list-style:none;
+}
+
+.sulsul-post-icons li {
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:26px;
+height:26px;
+}
+
+.sulsul-post-icons li:empty {
+display:none;
+}
+
+.sulsul-post-icons a {
+width:26px!important;
+height:26px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+position:relative!important;
+background:var(--bg)!important;
+border:1px solid var(--line)!important;
+font-size:0!important;
+line-height:1!important;
+color:var(--text-soft)!important;
+text-decoration:none!important;
+overflow:hidden!important;
+}
+
+.sulsul-post-icons a:hover {
+background:var(--accent-soft)!important;
+border-color:var(--accent)!important;
+color:var(--accent)!important;
+}
+
+.sulsul-post-icons img {
+display:none!important;
+}
+
+.sulsul-post-icons a::before {
+font-family:"Font Awesome 6 Free";
+font-weight:900;
+font-size:11px;
+line-height:1;
+color:currentColor;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* Gracias */
+.sulsul-post-action-thank a::before {
+content:"\f164";
+font-weight:400;
+}
+
+/* Multi quote */
+.sulsul-post-action-multiquote a::before {
+content:"\f086";
+font-weight:400;
+}
+
+/* Quote */
+.sulsul-post-action-quote a::before {
+content:"\f10d";
+}
+
+/* Edit */
+.sulsul-post-action-edit a::before {
+content:"\f303";
+}
+
+/* Delete */
+.sulsul-post-action-delete a::before {
+content:"\f00d";
+}
+
+/* IP */
+.sulsul-post-action-ip a::before {
+content:"\f3c5";
+}
+
+/* Report */
+.sulsul-post-action-report a::before {
+content:"\f071";
+}
+
+/****************************************
+  CONTENIDO POST
+****************************************/
+
+.sulsul-post-content {
+width:100%;
+font-size:14px;
+line-height:1.65;
+color:var(--text);
+}
+
+.sulsul-post-content > div {
+max-width:760px;
+margin:0 auto;
+}
+
+.sulsul-post-content p {
+margin:0 0 1em;
+}
+
+.sulsul-post-content p:last-child {
+margin-bottom:0;
+}
+
+.sulsul-post-content a {
+color:var(--accent);
+font-weight:700;
+text-decoration:underline;
+}
+
+.sulsul-post-content blockquote,
+.sulsul-post-content .quote {
+margin:18px 0;
+padding:16px;
+border:1px solid var(--line);
+background:var(--bg);
+color:var(--text-soft);
+}
+
+.sulsul-post-content img {
+max-width:100%;
+height:auto;
+}
+
+/****************************************
+  ADJUNTOS / FIRMA
+****************************************/
+
+.attachbox {
+margin:22px 0 0;
+padding:14px;
+border:1px solid var(--line);
+background:var(--bg);
+}
+
+.attachbox dt {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-post-signature {
+margin-top:26px;
+padding-top:18px;
+border-top:1px solid var(--line);
+font-size:12px;
+line-height:1.45;
+color:var(--text-soft);
+}
+
+/****************************************
+  PERFIL LATERAL
+  Pendiente de ajuste fino cuando armemos perfil general.
+****************************************/
+
+.sulsul-post-profile {
+min-width:0;
+padding:22px;
+background:rgba(0,0,0,.035);
+}
+
+body.dark-mode .sulsul-post-profile {
+background:rgba(255,255,255,.025);
+}
+
+.sulsul-profile-card {
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:12px;
+text-align:center;
+position:sticky;
+top:20px;
+}
+
+.sulsul-profile-avatar {
+width:170px;
+height:230px;
+border:1px solid var(--line);
+background:var(--bg);
+overflow:hidden;
+}
+
+.sulsul-profile-avatar img {
+width:100%!important;
+height:100%!important;
+object-fit:cover!important;
+filter:grayscale(1);
+display:block;
+}
+
+.sulsul-profile-avatar a,
+.sulsul-profile-avatar span {
+display:block;
+width:100%;
+height:100%;
+}
+
+.sulsul-profile-name,
+.sulsul-profile-name a {
+font-family:var(--fuente-titulo);
+font-size:30px;
+font-weight:400;
+line-height:.9;
+letter-spacing:.01em;
+text-transform:uppercase;
+color:var(--text)!important;
+}
+
+.sulsul-profile-name a:hover {
+color:var(--accent)!important;
+}
+
+.sulsul-profile-rank {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.14em;
+line-height:1.25;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-profile-rank img {
+max-width:100%;
+height:auto;
+filter:grayscale(1);
+}
+
+.sulsul-profile-awards {
+width:100%;
+}
+
+.sulsul-profile-fields {
+width:100%;
+display:flex;
+flex-direction:column;
+gap:7px;
+padding-top:12px;
+border-top:1px solid var(--line);
+}
+
+.sulsul-profile-field {
+display:grid;
+grid-template-columns:1fr;
+gap:3px;
+padding:7px;
+border:1px solid var(--line);
+background:var(--bg);
+text-align:left;
+}
+
+.sulsul-profile-field span {
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-profile-field strong {
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+line-height:1.25;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-profile-contact {
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-wrap:wrap;
+gap:6px;
+padding-top:12px;
+border-top:1px solid var(--line);
+}
+
+.sulsul-profile-contact img {
+height:22px!important;
+width:auto!important;
+object-fit:contain;
+filter:grayscale(1);
+opacity:.8;
+}
+
+/****************************************
+  LIKES
+****************************************/
+
+.sulsul-post-likes {
+display:flex;
+align-items:center;
+justify-content:flex-start;
+flex-wrap:wrap;
+gap:8px;
+padding:14px 32px;
+border-top:1px solid var(--line);
+}
+
+.sulsul-post-likes .rep-button {
+min-height:30px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+padding:0 10px;
+background:var(--bg);
+border:1px solid var(--line);
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-post-likes .rep-button:hover {
+background:var(--accent-soft);
+border-color:var(--accent);
+color:var(--accent);
+}
+
+.sulsul-post-likes i {
+font-size:10px;
+color:var(--accent);
+}
+
+/****************************************
+  POST FOOTER
+****************************************/
+
+.sulsul-post-footer {
+min-height:36px;
+display:flex;
+align-items:center;
+justify-content:flex-end;
+gap:8px;
+padding:0 14px;
+border-top:1px solid var(--line);
+}
+
+.sulsul-post-footer a {
+font-family:var(--fuente-ui);
+font-size:8px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+.sulsul-post-footer a:hover {
+color:var(--accent);
+}
+
+/****************************************
+  HIDDEN POSTS
+****************************************/
+
+.sulsul-post-hidden {
+padding:24px;
+}
+
+.sulsul-post-hidden-message {
+min-height:90px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:10px;
+border:1px dashed var(--line);
+background:var(--bg);
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--text-soft);
+text-align:center;
+}
+
+.sulsul-post-hidden-message i {
+font-size:18px;
+color:var(--accent);
+}
+
+/****************************************
+  QUICK REPLY
+****************************************/
+
+.sulsul-quickreply {
+width:100%;
+padding:22px;
+border:1px solid var(--line);
+background:var(--surface);
+}
+
+.sulsul-quickreply-title {
+display:flex;
+align-items:center;
+gap:9px;
+padding-bottom:14px;
+margin-bottom:18px;
+border-bottom:1px solid var(--line);
+font-family:var(--fuente-titulo);
+font-size:28px;
+line-height:1;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-quickreply-title i {
+font-size:14px;
+color:var(--accent);
+}
+
+/* Oculta títulos duplicados o restos nativos */
+.sulsul-quickreply .h3,
+.sulsul-quickreply h3,
+.sulsul-quickreply .quickreply-title,
+.sulsul-quickreply form > br:first-child {
+display:none!important;
+}
+
+/* Formulario general */
+.sulsul-quickreply form {
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:16px;
+margin:0;
+padding:0;
+}
+
+/* Caja general del editor */
+.sulsul-quickreply #textarea_content {
+width:min(760px,100%)!important;
+margin:0 auto!important;
+}
+
+/* SCEditor */
+.sulsul-quickreply .sceditor-container {
+width:min(760px,100%)!important;
+max-width:760px!important;
+min-height:270px!important;
+margin:0 auto!important;
+background:var(--bg)!important;
+border:1px solid var(--line)!important;
+box-shadow:none!important;
+border-radius:0!important;
+overflow:hidden!important;
+}
+
+/* Toolbar superior */
+.sulsul-quickreply .sceditor-toolbar {
+display:flex!important;
+flex-wrap:wrap!important;
+align-items:center!important;
+justify-content:center!important;
+gap:3px!important;
+background:var(--surface)!important;
+border:0!important;
+border-bottom:1px solid var(--line)!important;
+padding:7px!important;
+}
+
+/* Grupos de botones */
+.sulsul-quickreply .sceditor-group {
+display:flex!important;
+align-items:center!important;
+gap:2px!important;
+background:transparent!important;
+border:0!important;
+margin:0!important;
+padding:0!important;
+}
+
+/* Botones del editor */
+.sulsul-quickreply .sceditor-button {
+width:22px!important;
+height:22px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+background:var(--bg)!important;
+border:1px solid var(--line)!important;
+border-radius:0!important;
+margin:0!important;
+padding:0!important;
+}
+
+.sulsul-quickreply .sceditor-button:hover {
+background:var(--accent-soft)!important;
+border-color:var(--accent)!important;
+}
+
+/* Área editable */
+.sulsul-quickreply iframe {
+width:100%!important;
+min-height:220px!important;
+background:var(--bg)!important;
+border:0!important;
+}
+
+.sulsul-quickreply textarea {
+width:100%!important;
+max-width:760px!important;
+min-height:220px!important;
+background:var(--bg)!important;
+border:1px solid var(--line)!important;
+color:var(--text)!important;
+font-family:var(--fuente-ui)!important;
+font-size:13px!important;
+line-height:1.55!important;
+padding:14px!important;
+box-shadow:none!important;
+border-radius:0!important;
+}
+
+/* Botonera inferior */
+.sulsul-quickreply .submit-buttons,
+.sulsul-quickreply fieldset.submit-buttons {
+width:100%!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+gap:8px!important;
+border:0!important;
+margin:0!important;
+padding:0!important;
+}
+
+/* Botones enviar / previsualizar */
+.sulsul-quickreply input[type="submit"],
+.sulsul-quickreply input[type="button"],
+.sulsul-quickreply button {
+min-height:34px!important;
+padding:0 16px!important;
+background:var(--accent)!important;
+border:1px solid var(--accent)!important;
+font-family:var(--fuente-ui)!important;
+font-size:9px!important;
+font-weight:900!important;
+letter-spacing:.12em!important;
+text-transform:uppercase!important;
+color:var(--selection-text)!important;
+cursor:pointer!important;
+box-shadow:none!important;
+border-radius:0!important;
+}
+
+.sulsul-quickreply input[type="submit"]:hover,
+.sulsul-quickreply input[type="button"]:hover,
+.sulsul-quickreply button:hover {
+background:var(--bg)!important;
+color:var(--accent)!important;
+}
+
+/****************************************
+  EXTRAS / RULES / TOOLS
+****************************************/
+
+.sulsul-vt-watch {
+display:flex;
+justify-content:flex-end;
+margin-top:-8px;
+}
+
+.sulsul-vt-extra,
+.sulsul-vt-rules,
+.sulsul-vt-permissions,
+.sulsul-vt-bottomtools {
+width:100%;
+padding:18px;
+border:1px solid var(--line);
+background:var(--surface);
+}
+
+.sulsul-vt-extra {
+display:flex;
+flex-direction:column;
+gap:10px;
+font-size:12px;
+line-height:1.45;
+color:var(--text-soft);
+}
+
+.sulsul-vt-extra > a {
+width:28px;
+height:28px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid var(--line);
+color:var(--accent);
+}
+
+.sulsul-vt-rules-title {
+display:flex;
+align-items:center;
+gap:9px;
+margin-bottom:14px;
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.14em;
+text-transform:uppercase;
+color:var(--accent);
+}
+
+.sulsul-vt-rules-content {
+display:grid;
+grid-template-columns:auto minmax(0,1fr);
+gap:16px;
+}
+
+.sulsul-vt-rules-image img {
+max-width:120px;
+height:auto;
+filter:grayscale(1);
+}
+
+.sulsul-vt-bottomtools {
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:14px;
+}
+
+.sulsul-vt-bottomtools fieldset {
+border:0;
+margin:0;
+padding:0;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.sulsul-vt-bottomtools label {
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--accent);
+white-space:nowrap;
+}
+
+.sulsul-vt-bottomtools select {
+height:34px;
+min-width:0;
+width:100%;
+background:var(--bg);
+border:1px solid var(--line);
+font-family:var(--fuente-ui);
+font-size:10px;
+font-weight:900;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--text);
+}
+
+.sulsul-vt-bottomtools input[type="submit"] {
+height:34px;
+padding:0 12px;
+font-size:9px;
+}
+
+.sulsul-vt-admin {
+grid-column:1 / -1;
+font-family:var(--fuente-ui);
+font-size:9px;
+font-weight:900;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--text-soft);
+}
+
+/****************************************
+  LIMPIEZA NATIVA VIEWTOPIC
+****************************************/
+
+.sulsul-viewtopic .post,
+.sulsul-viewtopic .postbody,
+.sulsul-viewtopic .postprofile,
+.sulsul-viewtopic .inner,
+.sulsul-viewtopic .content,
+.sulsul-viewtopic .panel,
+.sulsul-viewtopic .module {
+background:transparent!important;
+border:0!important;
+box-shadow:none!important;
+}
+
+.sulsul-viewtopic .corners-top,
+.sulsul-viewtopic .corners-bottom,
+.sulsul-viewtopic .clear {
+display:none!important;
+}
+
+#first-post-br {
+border:0;
+border-top:1px solid var(--line);
+margin:0;
+}
+
+/****************************************
+  RESPONSIVE VIEWTOPIC
+****************************************/
+
+@media (max-width:1000px) {
+.sulsul-vt-header,
+.sulsul-vt-toolbar,
+.sulsul-vt-bottomtools {
+grid-template-columns:1fr;
+}
+
+.sulsul-vt-page {
+grid-column:1;
+grid-row:auto;
+align-items:flex-start;
+}
+
+.sulsul-post-layout {
+grid-template-columns:1fr;
+}
+
+.sulsul-post-main {
+border-right:0;
+border-bottom:1px solid var(--line);
+}
+
+.sulsul-profile-card {
+position:relative;
+top:auto;
+}
+
+.sulsul-profile-avatar {
+width:150px;
+height:150px;
+border-radius:100%;
+}
+}
+
+@media (max-width:620px) {
+.sulsul-vt-header,
+.sulsul-post-main,
+.sulsul-post-profile,
+.sulsul-quickreply,
+.sulsul-vt-extra,
+.sulsul-vt-rules,
+.sulsul-vt-permissions,
+.sulsul-vt-bottomtools {
+padding:16px;
+}
+
+.sulsul-post-topline {
+grid-template-columns:1fr;
+}
+
+.sulsul-post-icons {
+justify-content:flex-start;
+}
+
+.sulsul-vt-buttons,
+.sulsul-vt-navlinks,
+.sulsul-post-footer {
+justify-content:flex-start;
+flex-wrap:wrap;
+}
+
+.sulsul-vt-rules-content {
+grid-template-columns:1fr;
+}
+}
