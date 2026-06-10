@@ -959,7 +959,7 @@ color:var(--accent);
 
 /****************************************
   ACCIONES SUPERIORES / INFERIORES
-  Versión compacta con íconos Font Awesome
+  Compacto con íconos Font Awesome
 ****************************************/
 
 .sulsul-index-actions {
@@ -1024,11 +1024,14 @@ border-color:var(--accent);
 color:var(--accent);
 }
 
+/* Oculta iconos puestos manualmente en el HTML */
 .sulsul-index-actions a i {
 display:none;
 }
 
+/* Icono base */
 .sulsul-index-actions a::before {
+content:"\f111";
 font-family:"Font Awesome 6 Free";
 font-weight:900;
 font-size:13px;
@@ -1040,12 +1043,13 @@ justify-content:center;
 }
 
 /****************************************
-  ICONOS — acciones de mensajes
+  ICONOS — MENSAJES
 ****************************************/
 
 /* Ver mensajes desde la última visita */
 .sulsul-index-actions a[href*="search_id=newposts"]::before {
 content:"\f017";
+font-weight:400;
 }
 
 /* Ver tus mensajes */
@@ -1068,82 +1072,36 @@ font-weight:400;
 }
 
 /****************************************
-  ICONOS — estadísticas / actividad
+  ICONOS — ACTIVIDAD / ESTADÍSTICAS
 ****************************************/
 
 /* Temas activos del día */
 .sulsul-index-actions a[href*="search_id=activetopics"]::before,
-.sulsul-index-actions a[href*="search_id=active_topics"]::before {
+.sulsul-index-actions a[href*="search_id=active_topics"]::before,
+.sulsul-index-actions a[href*="/search?search_id=activetopics"]::before {
 content:"\f201";
+font-weight:900;
 }
 
 /* Top 20 posteadores hoy */
-.sulsul-index-actions a[href*="mode=today_posters"]::before,
-.sulsul-index-actions a[href*="today_posters"]::before {
+.sulsul-index-actions a[href*="today_posters"]::before,
+.sulsul-index-actions a[href*="mode=today_posters"]::before {
 content:"\f0c0";
+font-weight:900;
 }
 
 /* Top 20 posteadores del foro */
-.sulsul-index-actions a[href*="mode=overall_posters"]::before,
-.sulsul-index-actions a[href*="overall_posters"]::before {
+.sulsul-index-actions a[href*="overall_posters"]::before,
+.sulsul-index-actions a[href*="mode=overall_posters"]::before {
 content:"\f091";
+font-weight:900;
 }
 
 /* Suprimir cookies del foro */
 .sulsul-index-actions a[href*="delete_cookies"]::before,
 .sulsul-index-actions a[href*="mode=delete_cookies"]::before {
 content:"\f1b0";
-}
-
-/****************************************
-  FALLBACK
-  Si Foroactivo genera algún link raro sin match,
-  queda con icono genérico y no rompe la fila.
-****************************************/
-
-.sulsul-index-actions a:not([href])::before,
-.sulsul-index-actions a::before {
-content:"\f111";
-}
-
-.sulsul-index-actions a[href*="search_id=newposts"]::before {
-content:"\f017";
-}
-
-.sulsul-index-actions a[href*="search_id=egosearch"]::before {
-content:"\f007";
-font-weight:400;
-}
-
-.sulsul-index-actions a[href*="search_id=unanswered"]::before {
-content:"\f059";
-font-weight:400;
-}
-
-.sulsul-index-actions a[href*="mark=forums"]::before,
-.sulsul-index-actions a[href*="mark=all"]::before {
-content:"\f058";
-font-weight:400;
-}
-
-.sulsul-index-actions a[href*="search_id=activetopics"]::before,
-.sulsul-index-actions a[href*="search_id=active_topics"]::before {
-content:"\f201";
-}
-
-.sulsul-index-actions a[href*="mode=today_posters"]::before,
-.sulsul-index-actions a[href*="today_posters"]::before {
-content:"\f0c0";
-}
-
-.sulsul-index-actions a[href*="mode=overall_posters"]::before,
-.sulsul-index-actions a[href*="overall_posters"]::before {
-content:"\f091";
-}
-
-.sulsul-index-actions a[href*="delete_cookies"]::before,
-.sulsul-index-actions a[href*="mode=delete_cookies"]::before {
-content:"\f1b0";
+font-weight:900;
 }
 
 /****************************************
@@ -3056,7 +3014,7 @@ pointer-events:none;
 body.dark-mode .sulsul-tb-city-world,
 body.dark-mode .sulsul-tb-city-clock,
 body.dark-mode .sulsul-tb-city-data li {
-color:#FFFFFF);
+color:#FFFFFF;
 text-shadow:
 0 1px 2px rgba(0,0,0,.92),
 0 0 8px rgba(0,0,0,.75);
