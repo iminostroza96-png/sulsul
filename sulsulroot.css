@@ -278,11 +278,8 @@ border-right:1px solid var(--line);
 box-shadow:none;
 backdrop-filter:blur(10px);
 -webkit-backdrop-filter:blur(10px);
-display:grid;
-grid-template-rows:auto minmax(0,1fr) auto;
-align-items:stretch;
-justify-items:center;
-padding:14px 0 10px;
+display:block;
+padding:0;
 box-sizing:border-box;
 overflow:hidden;
 }
@@ -298,12 +295,17 @@ box-shadow:none;
 ****************************************/
 
 .sulsul-navbar-user {
-width:100%;
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:198px;
 display:flex;
 flex-direction:column;
 align-items:center;
+justify-content:flex-start;
 gap:8px;
-padding:0 10px 10px;
+padding:12px 10px 10px;
 border-bottom:1px solid var(--line);
 box-sizing:border-box;
 overflow:hidden;
@@ -318,6 +320,7 @@ overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
+flex:0 0 54px;
 }
 
 .sulsul-navbar-avatar img {
@@ -337,6 +340,7 @@ align-items:center;
 gap:2px;
 text-align:center;
 line-height:1;
+flex:0 0 auto;
 }
 
 .sulsul-navbar-login span {
@@ -360,7 +364,7 @@ text-transform:none;
 
 .sulsul-navbar-phrase {
 width:100%;
-max-height:56px;
+max-height:72px;
 overflow:hidden;
 font-family:var(--fuente-cuerpo);
 font-size:10px;
@@ -375,36 +379,74 @@ color:var(--text-soft);
 ****************************************/
 
 .sulsul-navbar-links {
+position:absolute;
+top:198px;
+left:0;
+right:0;
+bottom:82px;
 width:100%;
 min-height:0;
-height:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:flex-start;
-gap:5px;
+gap:6px;
 overflow-y:auto;
 overflow-x:hidden;
-padding:10px 0;
+padding:12px 0;
 box-sizing:border-box;
+}
+
+.sulsul-navbar-links ul,
+.sulsul-navbar-links ol {
+width:100%;
+display:flex!important;
+flex-direction:column!important;
+align-items:center!important;
+gap:6px!important;
+margin:0!important;
+padding:0!important;
+list-style:none!important;
+}
+
+.sulsul-navbar-links li {
+width:100%;
+height:30px!important;
+min-height:30px!important;
+max-height:30px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+margin:0!important;
+padding:0!important;
+list-style:none!important;
+line-height:1!important;
+box-sizing:border-box!important;
 }
 
 .sulsul-navbar-links a,
 .sulsul-navbar-links a.mainmenu {
-width:30px;
-height:30px;
-display:flex;
-align-items:center;
-justify-content:center;
+width:30px!important;
+height:30px!important;
+min-width:30px!important;
+max-width:30px!important;
+min-height:30px!important;
+max-height:30px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
 position:relative;
 isolation:isolate;
-background:transparent;
+background:transparent!important;
 border:1px solid transparent;
 color:var(--text-soft)!important;
 font-size:0!important;
-line-height:1;
-text-align:center;
-overflow:hidden;
+line-height:1!important;
+text-align:center!important;
+overflow:hidden!important;
+padding:0!important;
+margin:0!important;
+box-sizing:border-box!important;
 }
 
 /*** Ocultar sprites/imágenes nativas de Foroactivo ***/
@@ -418,6 +460,12 @@ opacity:0!important;
 visibility:hidden!important;
 width:0!important;
 height:0!important;
+min-width:0!important;
+max-width:0!important;
+min-height:0!important;
+max-height:0!important;
+margin:0!important;
+padding:0!important;
 }
 
 /****************************************
@@ -455,7 +503,7 @@ justify-content:center;
 
 .sulsul-navbar-links a:hover,
 .sulsul-navbar-links a.mainmenu:hover {
-background:var(--accent-soft);
+background:var(--accent-soft)!important;
 border-color:var(--line);
 color:var(--accent)!important;
 }
@@ -466,9 +514,12 @@ color:var(--accent)!important;
 
 /* Inicio / Índice */
 .sulsul-navbar-links a[href="/"]::before,
+.sulsul-navbar-links a[href="./"]::before,
 .sulsul-navbar-links a[href="/forum"]::before,
+.sulsul-navbar-links a[href*="/forum"]::before,
 .sulsul-navbar-links a[title="Índice"]::before,
-.sulsul-navbar-links a[title="Indice"]::before {
+.sulsul-navbar-links a[title="Indice"]::before,
+.sulsul-navbar-links a[href*="index"]::before {
 content:"\f015";
 }
 
@@ -542,16 +593,21 @@ content:"\f2f5";
 ****************************************/
 
 .sulsul-navbar-bottom {
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:82px;
 width:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 gap:6px;
-padding:8px 0 0;
+padding:8px 0;
 border-top:1px solid var(--line);
+background:inherit;
 box-sizing:border-box;
-flex:0 0 auto;
 }
 
 .sulsul-theme-toggle,
@@ -568,6 +624,7 @@ font-family:var(--fuente-ui);
 font-size:0;
 line-height:1;
 padding:0;
+box-sizing:border-box;
 }
 
 .sulsul-theme-toggle::before {
