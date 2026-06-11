@@ -7710,7 +7710,7 @@ box-sizing:border-box;
 --pf-h:1080px;
 --pf-line:var(--line);
 --pf-top-h:128px;
---pf-left-w:286px;
+--pf-left-w:300px;
 --pf-avatar-h:430px;
 --pf-pastel-1:rgba(129,155,54,.14);
 --pf-pastel-2:rgba(176,140,194,.14);
@@ -7932,7 +7932,7 @@ overflow:hidden;
 min-width:0;
 height:100%;
 display:grid;
-grid-template-rows:286px 264px minmax(0,1fr);
+grid-template-rows:300px 264px minmax(0,1fr);
 box-sizing:border-box;
 overflow:hidden;
 }
@@ -8564,7 +8564,7 @@ grid-template-columns:1fr;
 
 .sulsul-profile-left {
 width:100%;
-grid-template-columns:286px minmax(0,1fr);
+grid-template-columns:300px minmax(0,1fr);
 grid-template-rows:auto;
 border-right:0;
 border-bottom:1px solid var(--pf-line);
