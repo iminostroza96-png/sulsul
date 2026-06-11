@@ -4332,9 +4332,9 @@ color:var(--text-soft);
 .sulsul-topic-card {
 position:relative;
 width:100%;
-min-height:132px;
+min-height:96px;
 display:grid;
-grid-template-columns:56px minmax(0,1fr) 116px 188px;
+grid-template-columns:46px minmax(0,1fr) 96px 170px;
 align-items:stretch;
 border-bottom:1px solid var(--line);
 background:
@@ -4359,8 +4359,8 @@ var(--bg);
 ****************************************/
 
 .sulsul-topic-icon {
-width:56px;
-min-width:56px;
+width:46px;
+min-width:46px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -4398,8 +4398,8 @@ min-width:0;
 display:flex;
 flex-direction:column;
 justify-content:center;
-gap:8px;
-padding:18px 20px;
+gap:5px;
+padding:12px 18px;
 box-sizing:border-box;
 overflow:hidden;
 }
@@ -4447,7 +4447,7 @@ accent-color:var(--accent);
 margin:0;
 padding:0;
 font-family:var(--fuente-titulo);
-font-size:30px;
+font-size:25px;
 font-weight:400;
 line-height:.88;
 letter-spacing:.01em;
@@ -4602,7 +4602,7 @@ border-top:1px solid var(--line);
 
 .sulsul-topic-stats strong {
 font-family:var(--fuente-titulo);
-font-size:25px;
+font-size:22px;
 font-weight:400;
 line-height:.85;
 color:var(--text);
@@ -4625,18 +4625,18 @@ color:var(--accent);
 .sulsul-topic-last {
 min-width:0;
 display:grid;
-grid-template-columns:54px minmax(0,1fr);
-gap:10px;
+grid-template-columns:42px minmax(0,1fr);
+gap:9px;
 align-items:center;
-padding:14px;
+padding:10px;
 background:var(--bg);
 box-sizing:border-box;
 overflow:hidden;
 }
 
 .sulsul-topic-avatar {
-width:54px;
-height:54px;
+width:42px;
+height:42px;
 display:flex;
 align-items:center;
 justify-content:center;
