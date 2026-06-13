@@ -8051,7 +8051,7 @@ color:var(--accent);
 min-width:0;
 display:flex;
 flex-direction:column;
-padding:20px;
+padding:10px;
 border-bottom:1px solid var(--pf-line);
 box-sizing:border-box;
 overflow:hidden;
